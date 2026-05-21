@@ -3,66 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Kit - Isidoro (@isidaurum)</title>
+    <title>Isidaurum | Official Portfolio</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
-        /* Qui inizia il CSS: i nostri "colori e arredamento" */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #121212; /* Sfondo scuro elegante per tutto il sito */
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        :root {
+            /* La nostra nuova palette Torèt, Panna e Beige */
+            --toret-green: #154734; 
+            --toret-light: #226b4f;
+            --panna: #FDFBF7;
+            --beige: #EBE3D5;
+            --text-dark: #1A2520; /* Un verde quasi nero per i testi */
+            --text-muted: #5A6960; /* Un verde grigiastro per i testi secondari */
         }
 
-        .header {
+        body {
+            font-family: 'Urbanist', sans-serif;
+            background-color: var(--panna);
+            color: var(--text-dark);
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        /* --- SEZIONE HERO (COPERTINA VERDE TORET) --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--toret-green), #0a291d);
+            color: var(--panna);
             text-align: center;
-            padding: 50px 20px 40px 20px;
-            /* Una sfumatura accattivante che va dal rosso TikTok all'azzurro */
-            background: linear-gradient(135deg, #ff0050, #00f2fe); 
-            width: 100%;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            padding: 20px;
             box-sizing: border-box;
+            position: relative;
+        }
+
+        .profile-container {
+            position: relative;
+            margin-bottom: 20px;
         }
 
         .profile-pic {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%; /* Rende l'immagine un cerchio perfetto */
-            border: 5px solid #ffffff; /* Bordo bianco intorno alla foto */
-            background-color: #cccccc; /* Colore grigio temporaneo */
-            margin-bottom: 15px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid var(--beige);
+            padding: 5px;
             object-fit: cover;
+            background: var(--panna);
         }
 
-        h1 {
-            margin: 0;
-            font-size: 2.8rem;
-            letter-spacing: 1px;
-        }
-
-        p.bio {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-top: 5px;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="header">
-        <img src="https://via.placeholder.com/160" alt="Foto Profilo di Isidoro" class="profile-pic">
-        
-        <h1>Isidoro</h1>
-        <p class="bio">@isidaurum | Creator & Influencer</p>
-    </div>
-
-</body>
-</html>
+        .hero h1 { font-size: 4rem; margin: 0; font-weight: 800; letter-spacing: -2px; }
