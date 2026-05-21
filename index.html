@@ -27,18 +27,19 @@
             scroll-behavior: smooth;
         }
 
-        /* --- SEZIONE HERO CON MOLE DOODLE --- */
+        /* --- SEZIONE HERO CON SFONDO VETTORIALE + GRADIENTE VERDE --- */
         .hero {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, var(--toret-green), #0a291d);
+            /* Magia degli sfondi a strati: prima l'SVG trasparente, poi la virgola, poi il gradiente verde sotto! */
+            background: url('sfondo.svg') center center/cover no-repeat, 
+                        linear-gradient(135deg, var(--toret-green), #0a291d);
             color: var(--panna);
             padding: 20px;
             box-sizing: border-box;
             position: relative;
-            overflow: hidden;
         }
 
         .hero-content {
@@ -49,7 +50,8 @@
             width: 100%;
             text-align: center;
             position: relative;
-            z-index: 1;
+            /* Questo comando assicura che foto e testi stiano sempre IN PRIMO PIANO rispetto allo sfondo */
+            z-index: 10; 
         }
 
         .profile-container {
