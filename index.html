@@ -10,13 +10,13 @@
 
     <style>
         :root {
-            /* La nostra nuova palette Torèt, Panna e Beige */
+            /* Palette Torèt, Panna e Beige */
             --toret-green: #154734; 
             --toret-light: #226b4f;
             --panna: #FDFBF7;
             --beige: #EBE3D5;
-            --text-dark: #1A2520; /* Un verde quasi nero per i testi */
-            --text-muted: #5A6960; /* Un verde grigiastro per i testi secondari */
+            --text-dark: #1A2520; 
+            --text-muted: #5A6960;
         }
 
         body {
@@ -164,7 +164,7 @@
 
     <section class="hero">
         <div class="profile-container">
-            <img src="https://scontent-mxp1-1.cdninstagram.com/v/t51.82787-19/626469539_18457592023103643_5734869132972953571_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-mxp1-1.cdninstagram.com&_nc_cat=103&_nc_oc=Q6cZ2gEi_Vu2YqGqzkd2Q4KJzv3gX5QQsyUmRpvBcahUgjd7qcDQpNUqulf_lhWK_QhF2rQ&_nc_ohc=Y0REetIcISAQ7kNvwFKNt_Y&_nc_gid=xJ7VEpVGSH_-FbZCRpDKgg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af4AkfcI07hSOwcWWzr6YfKFzOiNno1RaApWnwWBQNEXTA&oe=6A14C312&_nc_sid=8b3546" alt="Isidoro Profilo" class="profile-pic">
+            <img src="foto.jpg" alt="Isidoro Profilo" class="profile-pic">
         </div>
         <h1>ISIDORO</h1>
         <p>@isidaurum | Content Creator</p>
@@ -232,10 +232,10 @@
             const erValue = document.getElementById('er-value');
 
             if (platform === 'instagram') {
-                erValue.innerText = '5.81%'; 
+                erValue.innerText = '5.81%'; // Inserisci qui l'ER reale di Instagram
                 container.style.display = 'block';
             } else if (platform === 'tiktok') {
-                erValue.innerText = '4.15%'; 
+                erValue.innerText = '4.15%'; // Inserisci qui l'ER reale di TikTok
                 container.style.display = 'block';
             } else {
                 container.style.display = 'none';
