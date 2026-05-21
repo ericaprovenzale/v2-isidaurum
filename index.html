@@ -157,4 +157,442 @@
         .audience-list { list-style: none; padding: 0; text-align: left; margin: 15px auto 0 auto; max-width: 200px; color: var(--toret-green); font-weight: 700; font-size: 1.1rem; }
         .audience-list li { margin-bottom: 12px; border-bottom: 1px solid rgba(21, 71, 52, 0.1); padding-bottom: 5px; }
         .audience-list li:last-child { border-bottom: none; }
-        .audience-sub { color: var(--text-muted); font-size: 0.9rem; font-weight: 700; margin-top: 15px; margin-bottom: 5px; text-align: left; max-width: 200px; margin-left:
+        .audience-sub { color: var(--text-muted); font-size: 0.9rem; font-weight: 700; margin-top: 15px; margin-bottom: 5px; text-align: left; max-width: 200px; margin-left: auto; margin-right: auto; }
+
+        /* --- CALCOLATORE ENGAGEMENT --- */
+        .engagement-box {
+            background: var(--beige);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .select-style {
+            background-color: var(--panna);
+            color: var(--toret-green);
+            border: 2px solid var(--toret-green);
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            transition: 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .select-style:focus { background-color: var(--toret-green); color: var(--panna); }
+
+        .result-box { display: none; animation: fadeIn 0.5s ease; }
+        .er-display { font-size: 5rem; font-weight: 800; color: var(--toret-green); margin: 10px 0; }
+
+        /* --- SEZIONE COLLABORAZIONI --- */
+        .year-title {
+            color: var(--toret-green);
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--beige);
+            padding-bottom: 10px;
+            text-align: left;
+        }
+
+        .collab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .collab-card {
+            background: var(--beige);
+            padding: 20px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid rgba(21, 71, 52, 0.1);
+            transition: 0.3s;
+        }
+
+        .collab-card:hover { border-color: var(--toret-green); transform: translateY(-5px); }
+        .collab-brand { color: var(--text-dark); font-weight: 800; font-size: 1.1rem; margin-bottom: 5px; }
+        .collab-date { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;}
+
+        .scroll-down { position: absolute; bottom: 30px; animation: bounce 2s infinite; color: var(--beige); z-index: 1; cursor:pointer; }
+
+        /* --- SEZIONE CONTATTI (MAIL) --- */
+        .contact-section {
+            background-color: var(--toret-green);
+            color: var(--panna);
+            text-align: center;
+            padding: 120px 20px;
+            border-radius: 60px 60px 0 0;
+            margin-top: 50px;
+        }
+        .mail-icon-wrap {
+            font-size: 7rem;
+            margin-bottom: 30px;
+            display: inline-block;
+            animation: pulse-mail 3s infinite ease-in-out;
+            color: var(--panna);
+        }
+        .contact-title { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; }
+        .contact-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 20px 50px;
+            background-color: var(--panna);
+            color: var(--toret-green);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+        .contact-btn:hover { transform: scale(1.05); background-color: var(--beige); }
+
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse-mail {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="profile-container">
+                <img src="foto.jpeg" alt="Isidoro Profilo" class="profile-pic">
+            </div>
+            <h1>ISIDORO</h1>
+            <p>@isidaurum | Content Creator</p>
+        </div>
+
+        <a class="scroll-down" onclick="document.getElementById('section1').scrollIntoView();">
+            <i class="fa-solid fa-chevron-down"></i>
+        </a>
+    </section>
+    
+
+    <section id="section1" class="section">
+        <h2 class="section-title">Instagram Insights</h2>
+        
+        <div class="toggle-container">
+            <button id="btn-30" class="toggle-btn active" onclick="toggleTimeframe('30')">Ultimi 30 Giorni</button>
+            <button id="btn-90" class="toggle-btn" onclick="toggleTimeframe('90')">Ultimi 90 Giorni</button>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="stat-card">
+                <i class="fa-solid fa-users"></i>
+                <span class="stat-num">119K</span>
+                <span class="stat-label">IG Followers</span>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-satellite-dish"></i>
+                <span class="stat-num" id="ig-reach">564K</span>
+                <span class="stat-label">Accounts Reached</span>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-play"></i>
+                <span class="stat-num" id="ig-views">1.94M</span>
+                <span class="stat-label">Total Views</span>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-user-plus"></i>
+                <span class="stat-num" id="ig-nonfollowers">57.5%</span>
+                <span class="stat-label">Non-Follower Reach</span>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 80px; ">IG Audience Demographics</h2>
+        <p class="section-subtitle">La community Instagram di @isidaurum</p>
+        
+        <div class="metrics-grid">
+            <div class="content-card">
+                <i class="fa-solid fa-venus-mars"></i>
+                <h4>Gender Split</h4>
+                <div style="display: flex; justify-content: space-between; margin-top: 15px; font-weight: 800; color: var(--toret-green); font-size: 1.2rem;">
+                    <span>64.9% M</span>
+                    <span style="color: var(--toret-light);">35.1% F</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-fill-m" style="width: 64.9%;"></div>
+                    <div class="progress-fill-f" style="width: 35.1%;"></div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <i class="fa-solid fa-cake-candles"></i>
+                <h4>Top Age Groups</h4>
+                <ul class="audience-list">
+                    <li>1. 25-34 Anni</li>
+                    <li>2. 18-24 Anni</li>
+                    <li>3. 35-44 Anni</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <i class="fa-solid fa-location-dot"></i>
+                <h4>Audience Location</h4>
+                
+                <p class="audience-sub">Top Cities</p>
+                <ul class="audience-list" style="margin-top: 0;">
+                    <li>📍 Torino</li>
+                    <li>📍 Milano</li>
+                </ul>
+
+                <p class="audience-sub" style="margin-top: 15px;">Top Countries</p>
+                <ul class="audience-list" style="margin-top: 0;">
+                    <li>🇮🇹 Italia</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="metrics-grid" style="margin-top: 40px;">
+            <div class="content-card">
+                <i class="fa-solid fa-clapperboard"></i>
+                <h4>Reels</h4>
+                <div class="content-num" id="reach-reels">1.5M</div>
+            </div>
+            <div class="content-card">
+                <i class="fa-solid fa-circle-notch"></i>
+                <h4>Storie</h4>
+                <div class="content-num" id="reach-stories">300K</div>
+            </div>
+            <div class="content-card">
+                <i class="fa-solid fa-image"></i>
+                <h4>Post</h4>
+                <div class="content-num" id="reach-posts">100K</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: rgba(235, 227, 213, 0.3); border-radius: 40px; padding-bottom: 60px;">
+        <h2 class="section-title">TikTok Data & Insights</h2>
+        <p class="section-subtitle">Metriche di interazione</p>
+        
+        <div class="metrics-grid">
+            <div class="stat-card">
+                <i class="fa-brands fa-tiktok"></i>
+                <span class="stat-num">41.5K</span>
+                <span class="stat-label">TikTok Followers</span>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-play"></i>
+                <span class="stat-num">5.7M</span>
+                <span class="stat-label">Video Views</span>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-heart"></i>
+                <span class="stat-num">295.6K</span>
+                <span class="stat-label">Likes</span>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-share"></i>
+                <span class="stat-num">23K</span>
+                <span class="stat-label">Shares</span>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 80px; ">TikTok Demographics</h2>
+        <p class="section-subtitle">Il pubblico di @isidaurum</p>
+        
+        <div class="metrics-grid">
+            <div class="content-card">
+                <i class="fa-solid fa-venus-mars"></i>
+                <h4>Gender Split</h4>
+                <div style="display: flex; justify-content: space-between; margin-top: 15px; font-weight: 800; color: var(--toret-green); font-size: 1.2rem;">
+                    <span>41.3% M</span>
+                    <span style="color: var(--toret-light);">58.7% F</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-fill-m" style="width: 41.3%;"></div>
+                    <div class="progress-fill-f" style="width: 58.7%;"></div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <i class="fa-solid fa-cake-candles"></i>
+                <h4>Top Age Groups</h4>
+                <ul class="audience-list">
+                    <li>1. 18-24 Anni (44.5%)</li>
+                    <li>2. 25-34 Anni (33.6%)</li>
+                    <li>3. 35-44 Anni (8.7%)</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <i class="fa-solid fa-location-dot"></i>
+                <h4>Audience Location</h4>
+                
+                <p class="audience-sub">Top Cities</p>
+                <ul class="audience-list" style="margin-top: 0;">
+                    <li>📍 Torino (11.2%)</li>
+                    <li>📍 Milano (8.7%)</li>
+                    <li>📍 Roma (6.8%)</li>
+                </ul>
+
+                <p class="audience-sub" style="margin-top: 15px;">Top Countries</p>
+                <ul class="audience-list" style="margin-top: 0;">
+                    <li>🇮🇹 Italia (94.6%)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Engagement Rate</h2>
+        <div class="engagement-box">
+            <select id="platform-select" class="select-style" onchange="showER()">
+                <option value="">-- Seleziona una piattaforma --</option>
+                <option value="instagram">Instagram</option>
+                <option value="tiktok">TikTok</option>
+            </select>
+
+            <div id="result-container" class="result-box">
+                <p style="color: var(--text-muted); margin: 0; font-weight: 600;">Tasso di interazione attuale della community:</p>
+                <div class="er-display" id="er-value">0.00%</div>
+                <p style="color: var(--toret-light); font-size: 0.9rem; margin: 0; font-weight: 600;">Dato stimato in base alle ultime interazioni</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Main Collabs</h2>
+        
+        <h3 class="year-title">2026</h3>
+        <div class="collab-grid">
+            <div class="collab-card">
+                <div class="collab-brand">Reale Mutua & Teatro Regio</div>
+                <div class="collab-date">February 2026</div>
+            </div>
+            <div class="collab-card">
+                <div class="collab-brand">Fiscozen</div>
+                <div class="collab-date">April - May 2026</div>
+            </div>
+        </div>
+
+        <h3 class="year-title">2025</h3>
+        <div class="collab-grid">
+            <div class="collab-card">
+                <div class="collab-brand">Caffarel</div>
+                <div class="collab-date">November 2025</div>
+            </div>
+            <div class="collab-card">
+                <div class="collab-brand">Armando Testa – DimmidiSì</div>
+                <div class="collab-date">Oct - Nov 2025</div>
+            </div>
+            <div class="collab-card">
+                <div class="collab-brand">Starbucks</div>
+                <div class="collab-date">July 2025</div>
+            </div>
+            <div class="collab-card">
+                <div class="collab-brand">Lime (e-bike)</div>
+                <div class="collab-date">May 2025</div>
+            </div>
+            <div class="collab-card">
+                <div class="collab-brand">24 Bottles</div>
+                <div class="collab-date">April 2025</div>
+            </div>
+            <div class="collab-card">
+                <div class="collab-brand">Centro Commerciale "Le Gru"</div>
+                <div class="collab-date">Feb - Dec 2025</div>
+            </div>
+        </div>
+
+        <h3 class="year-title">2024</h3>
+        <div class="collab-grid">
+            <div class="collab-card">
+                <div class="collab-brand">Centro Commerciale Le Fornaci</div>
+                <div class="collab-date">December 2024</div>
+            </div>
+            <div class="collab-card">
+                <div class="collab-brand">Volontariato Torino ETS</div>
+                <div class="collab-date">December 2024</div>
+            </div>
+            <div class="collab-card">
+                <div class="collab-brand">Museo Nazionale del Cinema & TFF</div>
+                <div class="collab-date">November 2024</div>
+            </div>
+            <div class="collab-card">
+                <div class="collab-brand">Open Fiber</div>
+                <div class="collab-date">Nov - Dec 2024</div>
+            </div>
+            <div class="collab-card">
+                <div class="collab-brand">Turismo Torino</div>
+                <div class="collab-date">Feb - Jun 2024</div>
+            </div>
+        </div>
+
+        <h3 class="year-title">2023</h3>
+        <div class="collab-grid">
+            <div class="collab-card">
+                <div class="collab-brand">Intesa Sanpaolo & ATP Finals</div>
+                <div class="collab-date">November 2023</div>
+            </div>
+            <div class="collab-card">
+                <div class="collab-brand">Intesa Sanpaolo & Teatro Regio</div>
+                <div class="collab-date">October 2023</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="mail-icon-wrap">
+            <i class="fa-solid fa-envelope-open-text"></i>
+        </div>
+        <h2 class="contact-title">Contact Us</h2>
+        <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px;">Pronto per la prossima collaborazione?<br>Invia una proposta o richiedi il media kit in formato PDF.</p>
+        <a href="mailto:inserisci-la-tua-email@qui.com" class="contact-btn">SCRIVI ORA</a>
+    </section>
+
+    <footer style="text-align: center; padding: 40px; background-color: var(--toret-green); color: var(--beige); font-size: 0.9rem; font-weight: 600;">
+        &copy; 2026 Isidaurum Media Kit | Created with GitHub
+    </footer>
+
+    <script>
+        function toggleTimeframe(period) {
+            document.getElementById('btn-30').classList.remove('active');
+            document.getElementById('btn-90').classList.remove('active');
+            document.getElementById('btn-' + period).classList.add('active');
+
+            if (period === '30') {
+                document.getElementById('ig-reach').innerText = '564K';
+                document.getElementById('ig-views').innerText = '1.94M';
+                document.getElementById('ig-nonfollowers').innerText = '57.5%';
+            } else {
+                document.getElementById('ig-reach').innerText = '1.46M';
+                document.getElementById('ig-views').innerText = '5.89M';
+                document.getElementById('ig-nonfollowers').innerText = '54.5%';
+            }
+        }
+
+        function showER() {
+            const platform = document.getElementById('platform-select').value;
+            const container = document.getElementById('result-container');
+            const erValue = document.getElementById('er-value');
+
+            if (platform === 'instagram') {
+                erValue.innerText = '5.32%'; 
+                container.style.display = 'block';
+            } else if (platform === 'tiktok') {
+                erValue.innerText = '6.85%'; 
+                container.style.display = 'block';
+            } else {
+                container.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
