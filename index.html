@@ -27,15 +27,17 @@
             scroll-behavior: smooth;
         }
 
-        /* --- SEZIONE HERO CON SFONDO VETTORIALE + GRADIENTE VERDE --- */
+        /* --- SEZIONE HERO CON STRATI MULTIPLI (HTML CORRETTO) --- */
         .hero {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Magia degli sfondi a strati: prima l'SVG trasparente, poi la virgola, poi il gradiente verde sotto! */
-            background: url('sfondo.svg') center center/cover no-repeat, 
-                        linear-gradient(135deg, var(--toret-green), #0a291d);
+            /* Strati: Prima il disegno SVG (sopra), poi il gradiente verde (sotto) */
+            background-image: url('sfondo.svg'), linear-gradient(135deg, var(--toret-green), #0a291d);
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
             color: var(--panna);
             padding: 20px;
             box-sizing: border-box;
@@ -50,9 +52,10 @@
             width: 100%;
             text-align: center;
             position: relative;
-            /* Questo comando assicura che foto e testi stiano sempre IN PRIMO PIANO rispetto allo sfondo */
+            /* Mantiene i testi e la foto sopra i disegni dello sfondo */
             z-index: 10; 
         }
+
         .profile-container {
             position: relative;
             margin-bottom: 20px;
@@ -70,7 +73,6 @@
 
         .hero h1 { font-size: 4rem; margin: 0; font-weight: 800; letter-spacing: -2px; }
         .hero p { font-size: 1.5rem; color: var(--beige); margin: 10px 0; }
-
 
         /* --- STRUTTURA DELLE SEZIONI --- */
         .section { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
@@ -190,7 +192,7 @@
         .result-box { display: none; animation: fadeIn 0.5s ease; }
         .er-display { font-size: 5rem; font-weight: 800; color: var(--toret-green); margin: 10px 0; }
 
-        /* --- SEZIONE COLLABORAZIONI (TIMELINE STYLE) --- */
+        /* --- SEZIONE COLLABORAZIONI --- */
         .year-title {
             color: var(--toret-green);
             font-size: 1.8rem;
@@ -240,21 +242,6 @@
             </div>
             <h1>ISIDORO</h1>
             <p>@isidaurum | Content Creator</p>
-        </div>
-        
-        <div class="hero-doodle">
-            <svg viewBox="0 0 100 220" xmlns="http://www.w3.org/2000/svg">
-                <path d="M 50 10 L 52 25 L 48 25 Z" fill="#d5cfc4" stroke="none"/>
-                <path d="M 50 25 L 50 60" stroke-width="3"/>
-                <path d="M 40 60 L 60 60 L 65 75 L 35 75 Z" />
-                <path d="M 45 75 L 55 75 L 58 100 L 42 100 Z" />
-                <path d="M 40 100 L 60 100 L 62 130 L 38 130 Z" />
-                <path d="M 35 130 L 65 130 L 70 180 L 30 180 Z" />
-                <path d="M 25 180 L 75 180 L 78 210 L 22 210 Z" />
-                <path d="M 50 130 L 50 180" stroke-dasharray="3 3"/>
-                <path d="M 40 130 L 40 180" stroke-dasharray="3 3"/>
-                <path d="M 60 130 L 60 180" stroke-dasharray="3 3"/>
-            </svg>
         </div>
 
         <div class="scroll-down">
@@ -336,8 +323,25 @@
                 </ul>
             </div>
         </div>
+        
+        <div class="metrics-grid" style="margin-top: 40px;">
+            <div class="content-card">
+                <i class="fa-solid fa-clapperboard"></i>
+                <h4>Reels</h4>
+                <div class="content-num" id="reach-reels">1.5M</div>
+            </div>
+            <div class="content-card">
+                <i class="fa-solid fa-circle-notch"></i>
+                <h4>Storie</h4>
+                <div class="content-num" id="reach-stories">300K</div>
+            </div>
+            <div class="content-card">
+                <i class="fa-solid fa-image"></i>
+                <h4>Post</h4>
+                <div class="content-num" id="reach-posts">100K</div>
+            </div>
+        </div>
     </section>
-
 
     <section class="section" style="background-color: rgba(235, 227, 213, 0.3); border-radius: 40px; padding-bottom: 60px;">
         <h2 class="section-title">TikTok Data & Insights</h2>
