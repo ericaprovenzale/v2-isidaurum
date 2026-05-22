@@ -258,6 +258,23 @@
         }
         .contact-btn:hover { transform: scale(1.05); background-color: var(--beige); }
 
+        /* --- STILE ICONE SOCIAL FOOTER --- */
+        .social-footer {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        .social-footer a {
+            color: var(--beige);
+            font-size: 2.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .social-footer a:hover {
+            color: var(--panna);
+            transform: translateY(-5px); /* Effetto salto al passaggio del mouse */
+        }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes pulse-mail {
@@ -548,14 +565,28 @@
         </div>
     </section>
 
-    <section class="contact-section">
+   <section class="contact-section">
         <div class="mail-icon-wrap">
             <i class="fa-solid fa-envelope-open-text"></i>
         </div>
         <h2 class="contact-title">Contact Us</h2>
-        <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px;">Pronto per la prossima collaborazione?</p>
-        <a href="mailto:info@isidaurum.it" class="contact-btn">Let's chat!</a>
+        <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px;">Pronto per la prossima collaborazione?<br>Invia una proposta o richiedi il media kit in formato PDF.</p>
+        
+        <a href="mailto:isidaurum.management@gmail.com" class="contact-btn">SCRIVI ORA</a>
+
+        <div class="social-footer">
+            <a href="https://www.instagram.com/isidaurum/" target="_blank" rel="noopener noreferrer" title="Instagram Profile">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@isidaurum" target="_blank" rel="noopener noreferrer" title="TikTok Profile">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+        </div>
     </section>
+
+    <footer style="text-align: center; padding: 40px; background-color: var(--toret-green); color: var(--beige); font-size: 0.9rem; font-weight: 600;">
+        &copy; 2026 Isidaurum Media Kit | Created with GitHub
+    </footer>
 
     <script>
         function toggleTimeframe(period) {
