@@ -490,7 +490,6 @@
                 font-size: 10pt !important;
             }
 
-            /* COMPATTAZIONE DEGLI SPAZI VERTICALI PER EVITARE SPAZI BIANCHI */
             .section {
                 padding: 15px 0 !important;
             }
@@ -528,12 +527,21 @@
                 box-shadow: none !important;
                 border-radius: 12px !important;
                 padding: 15px !important;
+                
+                /* SICUREZZA ASSOLUTA CONTRO I TAGLI A METÀ PAGINA */
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                display: block !important; /* Forza blocco standard per aggirare bug dei motori di stampa su grid/flex */
             }
 
-            /* OTTIMIZZAZIONE DELLE GRIGLIE PER STAMPA */
+            /* DISATTIVAZIONE GRIGLIE IN STAMPA PER NON ROMPERE I BREAK-INSIDE */
             .metrics-grid, .collab-grid {
-                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
-                gap: 10px !important;
+                display: block !important;
+            }
+            .stat-card, .content-card, .collab-card {
+                margin-bottom: 12px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
             }
 
             /* Rimpicciolimento controllato e leggibile dei testi */
@@ -667,16 +675,6 @@
                 font-size: 8pt !important;
                 background: #ffffff !important;
                 color: var(--text-muted) !important;
-            }
-
-            /* BLOCCA LE INTERRUZIONI SOLO SUI SINGOLI RIQUADRI INTERNI */
-            .stat-card, 
-            .content-card, 
-            .collab-card, 
-            .engagement-box, 
-            .contact-section {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
             }
             
             .section {
@@ -1054,7 +1052,7 @@
         <div class="mail-icon-wrap">
             <i class="fa-solid fa-envelope-open-text"></i>
         </div>
-        <h2 class="contact-title">Contact Us</h2>
+        <h2 class="contact-title">Get in touch</h2>
         <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px;">Pronto per la prossima collaborazione?</p>
         
         <a href="mailto:info@isidaurum.it" class="contact-btn">Let's chat!</a>
@@ -1193,11 +1191,23 @@
                 }
             }
 
+            // Funzione per fermare l'audio e l'esecuzione di qualsiasi iframe attivo ri-caricando il suo link
+            function stopAllIframes() {
+                const iframes = track.querySelectorAll('iframe');
+                iframes.forEach(iframe => {
+                    const currentSrc = iframe.getAttribute('src');
+                    iframe.setAttribute('src', '');
+                    iframe.setAttribute('src', currentSrc);
+                });
+            }
+
             nextBtn.addEventListener('click', () => {
+                stopAllIframes(); // Ferma l'audio prima dello scorrimento
                 track.scrollBy({ left: itemWidth, behavior: 'smooth' });
             });
 
             prevBtn.addEventListener('click', () => {
+                stopAllIframes(); // Ferma l'audio prima dello scorrimento
                 track.scrollBy({ left: -itemWidth, behavior: 'smooth' });
             });
 
