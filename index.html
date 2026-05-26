@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Isidaurum | Official Portfolio</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght=400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
@@ -26,10 +26,6 @@
             margin: 0;
             scroll-behavior: smooth;
         }
-
-        /* --- CONFIGURAZIONE BLOCCHI TIMEFRAME WEB --- */
-        #ig-90-block { display: none; }
-        .print-timeframe-title { display: none; }
 
         /* --- MENU HAMBURGER FLUTTUANTE --- */
         .hamburger-wrapper {
@@ -93,38 +89,6 @@
             padding-left: 30px;
         }
 
-        /* --- BOTTONE SALVA PDF --- */
-        .pdf-btn {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background-color: var(--toret-green);
-            color: var(--panna);
-            border: none;
-            padding: 15px 25px;
-            border-radius: 30px;
-            font-family: 'Urbanist', sans-serif;
-            font-weight: 800;
-            font-size: 1.1rem;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            z-index: 9999;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .pdf-btn:hover {
-            transform: scale(1.05) translateY(-5px);
-            background-color: var(--toret-light);
-        }
-
-        /* --- INFO SOLO PER STAMPA/PDF --- */
-        .print-contact-info,
-        .print-engagement-info {
-            display: none;
-        }
-
         /* --- SEZIONE HERO CON STRATI MULTIPLI --- */
         .hero {
             height: 100vh;
@@ -169,6 +133,22 @@
 
         .hero h1 { font-size: 4rem; margin: 0; font-weight: 800; letter-spacing: -2px; text-shadow: 2px 2px 16px #000000; }
         .hero p { font-size: 1.5rem; color: var(--beige); margin: 10px 0; text-shadow: 2px 2px 8px #000000; }
+
+        /* --- FRECCIA SCORRIMENTO HERO (CORRETTA) --- */
+        .scroll-down { 
+            position: absolute; 
+            bottom: 30px; 
+            left: 0; 
+            right: 0; 
+            margin: 0 auto; /* Questo la blocca esattamente al centro */
+            width: 50px; 
+            text-align: center;
+            animation: bounce 2s infinite; 
+            color: var(--beige); 
+            z-index: 10; 
+            cursor: pointer; 
+            font-size: 1.5rem;
+        }
 
         /* --- STRUTTURA DELLE SEZIONI --- */
         .section { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
@@ -294,7 +274,7 @@
             align-items: center;
             
             transition: transform 0.4s ease, opacity 0.4s ease;
-            transform: scale(0.85);
+            transform: scale(0.85); 
             opacity: 0.5;           
             z-index: 1;
         }
@@ -404,267 +384,72 @@
         .collab-brand { color: var(--text-dark); font-weight: 800; font-size: 1.1rem; margin-bottom: 5px; }
         .collab-date { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;}
 
-        /* =========================================================
-           STRAVOLGIMENTO GRAFICO - OTTIMIZZAZIONE EDITORIALE PER PDF
-           ========================================================= */
-        @media print {
-            @page {
-                size: portrait;
-                margin: 12mm 12mm;
-            }
+        /* --- LINK AI REEL NELLE COLLAB --- */
+        .collab-link {
+            margin-top: 12px;
+            display: inline-block;
+            color: var(--toret-light);
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            border-top: 1px solid rgba(21, 71, 52, 0.1);
+            padding-top: 8px;
+            width: 100%;
+        }
+        .collab-link i { margin-left: 5px; }
+        .collab-link:hover { color: var(--toret-green); }
+        .collab-card:hover .collab-link { border-top-color: var(--toret-green); }
 
-            /* RIMOZIONE TOTALE DI SFONDI (PAGINA BIANCA EDITORIALE) */
-            body, html, .section, .hero, .contact-section, #tiktok, footer {
-                background: #ffffff !important;
-                background-color: #ffffff !important;
-                background-image: none !important;
-                color: var(--text-dark) !important;
-                -webkit-print-color-adjust: economy !important;
-                print-color-adjust: economy !important;
-                font-size: 9.5pt !important;
-                line-height: 1.25 !important;
-            }
+        /* --- SEZIONE CONTATTI E FOOTER --- */
+        .contact-section {
+            background-color: var(--toret-green);
+            color: var(--panna);
+            text-align: center;
+            padding: 120px 20px;
+            border-radius: 60px 60px 0 0;
+            margin-top: 50px;
+        }
+        .mail-icon-wrap {
+            font-size: 7rem;
+            margin-bottom: 30px;
+            display: inline-block;
+            animation: pulse-mail 3s infinite ease-in-out;
+            color: var(--panna);
+        }
+        .contact-title { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; }
+        .contact-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 20px 50px;
+            background-color: var(--panna);
+            color: var(--toret-green);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+        .contact-btn:hover { transform: scale(1.05); background-color: var(--beige); }
 
-            .section {
-                padding: 4px 0 !important;
-                margin: 0 !important;
-            }
-
-            /* FORZATURA ASSOLUTA: TIKTOK INIZIA RIGIDAMENTE IN PAGINA 2 */
-            #tiktok {
-                page-break-before: always !important;
-                break-before: page !important;
-            }
-
-            /* Blocca i titoli orfani a fine pagina */
-            .section-title, .section-subtitle, .year-title, h2, h3 {
-                page-break-after: avoid !important;
-                break-after: avoid !important;
-                text-align: left !important;
-            }
-
-            /* Nasconde elementi interattivi web */
-            .hamburger-wrapper, .pdf-btn, .scroll-down, .toggle-container, .arrow, .social-footer, .contact-btn, .select-style, #result-container, #interviews, .collab-link, .mail-icon-wrap, .stat-card i, .content-card i {
-                display: none !important;
-            }
-
-            /* RIMOZIONE DI TUTTI I RIQUADRI (BOX) DEL SITO WEB */
-            .stat-card, .content-card, .collab-card, .engagement-box, .contact-section {
-                background: none !important;
-                background-color: transparent !important;
-                border: none !important;
-                box-shadow: none !important;
-                border-radius: 0 !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                text-align: left !important;
-            }
-
-            /* --- METRICHE INSTAGRAM COMPATTE SU 2 COLONNE COMPOSITE (PAGINA 1) --- */
-            .timeframe-blocks-container {
-                display: block !important;
-                clear: both !important;
-                margin-top: 5px !important;
-            }
-            #ig-30-block, #ig-90-block {
-                display: inline-block !important;
-                vertical-align: top !important;
-                width: 48% !important;
-                margin-right: 4% !important;
-                box-sizing: border-box !important;
-            }
-            #ig-90-block {
-                margin-right: 0 !important;
-            }
-            .print-timeframe-title {
-                display: block !important;
-                font-size: 10pt !important;
-                color: var(--toret-green) !important;
-                margin: 0 0 5px 0 !important;
-                font-weight: 800;
-                border-bottom: 1px solid rgba(21, 71, 52, 0.15) !important;
-                padding-bottom: 2px !important;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-            }
-            #ig-30-block .stat-card, #ig-90-block .stat-card {
-                display: block !important;
-                width: 100% !important;
-                margin-right: 0 !important;
-                margin-bottom: 8px !important;
-                border-left: 2px solid var(--toret-green) !important;
-                padding-left: 8px !important;
-            }
-
-            /* --- STRUTTURA AD ORIZZONTE A 3 COLONNE PER INSTAGRAM (GARANTISCE IL DESIGN IN PAGINA 1) --- */
-            #instagram .metrics-grid {
-                display: block !important;
-                clear: both !important;
-                margin-top: 5px !important;
-            }
-            #instagram .metrics-grid:not(.timeframe-block .metrics-grid) .content-card {
-                display: inline-block !important;
-                vertical-align: top !important;
-                width: 31% !important;
-                margin-right: 3.5% !important;
-                margin-bottom: 10px !important;
-                border-left: 2px solid var(--toret-green) !important;
-                padding-left: 8px !important;
-            }
-            #instagram .metrics-grid:not(.timeframe-block .metrics-grid) .content-card:last-child {
-                margin-right: 0 !important;
-            }
-
-            /* --- STRUTTURA STRUTTURATA TIKTOK (PAGINA 2) --- */
-            #tiktok .metrics-grid {
-                display: block !important;
-                clear: both !important;
-                margin-top: 5px !important;
-            }
-            /* 4 stat cards di TikTok divise simmetricamente su 2 colonne affiancate */
-            #tiktok .metrics-grid:first-of-type .stat-card {
-                display: inline-block !important;
-                vertical-align: top !important;
-                width: 48% !important;
-                margin-right: 4% !important;
-                margin-bottom: 10px !important;
-                border-left: 2px solid var(--toret-green) !important;
-                padding-left: 8px !important;
-            }
-            #tiktok .metrics-grid:first-of-type .stat-card:nth-child(2n) {
-                margin-right: 0 !important;
-            }
-            /* Demografiche di TikTok su 3 colonne orizzontali ad incastro */
-            #tiktok .metrics-grid:last-of-type .content-card {
-                display: inline-block !important;
-                vertical-align: top !important;
-                width: 31% !important;
-                margin-right: 3.5% !important;
-                margin-bottom: 10px !important;
-                border-left: 2px solid var(--toret-green) !important;
-                padding-left: 8px !important;
-            }
-            #tiktok .metrics-grid:last-of-type .content-card:last-child {
-                margin-right: 0 !important;
-            }
-
-            /* Rimpicciolimento controllato e leggibile dei testi */
-            .section-title {
-                font-size: 13pt !important;
-                color: var(--toret-green) !important;
-                margin-top: 12px !important;
-                margin-bottom: 4px !important;
-                font-weight: 800;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-            }
-            .section-subtitle {
-                font-size: 8.5pt !important;
-                margin-top: -2px !important;
-                margin-bottom: 8px !important;
-                color: var(--text-muted) !important;
-            }
-            .stat-num {
-                font-size: 18pt !important;
-                color: var(--toret-green) !important;
-                font-weight: 800;
-                line-height: 1.1 !important;
-            }
-            .stat-label {
-                font-size: 8pt !important;
-                color: var(--text-muted) !important;
-                font-weight: 600;
-                display: block !important;
-                margin-top: 1px !important;
-            }
-            .content-card h4 {
-                font-size: 8.5pt !important;
-                color: var(--text-muted) !important;
-                margin: 0 0 1px 0 !important;
-            }
-            .content-num {
-                font-size: 13pt !important;
-                color: var(--toret-green) !important;
-            }
-
-            .content-card div[style*="display: flex"] {
-                display: block !important;
-                font-size: 10pt !important;
-                margin-top: 2px !important;
-            }
-            .progress-bar-bg { display: none !important; }
-            .audience-list { font-size: 8.5pt !important; list-style: none !important; padding: 0 !important; margin: 2px 0 0 0 !important; }
-            .audience-list li { margin-bottom: 2px !important; border-bottom: none !important; padding-bottom: 0 !important; }
-            .audience-sub { font-size: 8pt !important; margin-top: 4px !important; margin-bottom: 1px !important; }
-
-            /* DESIGN COLLABORAZIONI EDITORIALI (STILE LISTA AZIENDALE) */
-            .year-title {
-                border-bottom: 1px solid var(--toret-green) !important;
-                color: var(--toret-green) !important;
-                font-size: 11pt !important;
-                margin-top: 14px !important;
-                margin-bottom: 6px !important;
-                padding-bottom: 2px !important;
-                font-weight: 800;
-            }
-            .collab-grid { display: block !important; }
-            .collab-card {
-                display: flex !important;
-                justify-content: space-between !important;
-                align-items: baseline !important;
-                padding: 4px 0 !important;
-                margin-bottom: 0 !important;
-                border-bottom: 1px dashed rgba(21, 71, 52, 0.15) !important;
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-            }
-            .collab-brand {
-                font-size: 9.5pt !important;
-                color: var(--text-dark) !important;
-                font-weight: 600;
-                margin: 0 !important;
-                display: inline-block !important;
-            }
-            .collab-date {
-                font-size: 8pt !important;
-                color: var(--text-muted) !important;
-                display: inline-block !important;
-            }
-
-            /* SEZIONE ENGAGEMENT RATE */
-            .print-engagement-info { display: block !important; margin-top: 8px !important; }
-            .print-er-row {
-                display: flex !important;
-                justify-content: space-between !important;
-                padding: 4px 0 !important;
-                border-bottom: 1px dashed rgba(21, 71, 52, 0.15) !important;
-                font-size: 10pt !important;
-            }
-            .print-er-row strong { color: var(--text-dark) !important; font-weight: 600; }
-            .print-er-row span { color: var(--toret-green) !important; font-weight: 800; }
-
-            /* INTESTAZIONE HERO MINIMAL IN ALTO A SINISTRA */
-            .hero {
-                height: auto !important;
-                min-height: auto !important;
-                padding: 0 0 8px 0 !important;
-                margin-bottom: 4px !important;
-                border-bottom: 1.5px solid var(--toret-green) !important;
-            }
-            .hero-content { display: block !important; text-align: left !important; }
-            .profile-container { display: inline-block !important; vertical-align: middle !important; margin-bottom: 0 !important; margin-right: 12px !important; }
-            .profile-pic { width: 45px !important; height: 45px !important; border: 2px solid var(--toret-green) !important; padding: 1px !important; }
-            .hero h1 { display: inline-block !important; vertical-align: middle !important; font-size: 16pt !important; color: var(--toret-green) !important; text-shadow: none !important; font-weight: 800; }
-            .hero p { display: block !important; margin-top: 2px !important; font-size: 9pt !important; color: var(--text-muted) !important; text-shadow: none !important; }
-
-            /* CONTATTI */
-            .contact-section { border-top: 2px solid var(--toret-green) !important; margin-top: 25px !important; padding-top: 10px !important; }
-            .contact-title { font-size: 12pt !important; color: var(--toret-green) !important; font-weight: 800; text-transform: uppercase; margin-bottom: 2px !important; }
-            .print-contact-info { display: block !important; margin-top: 6px !important; font-size: 9.5pt !important; text-align: left !important; line-height: 1.4 !important; }
-            .print-contact-info p { margin: 2px 0 !important; color: var(--text-dark) !important; }
-            .print-contact-info strong { color: var(--toret-green) !important; }
-
-            footer { padding: 10px 0 0 0 !important; font-size: 8pt !important; background: #ffffff !important; color: var(--text-muted) !important; text-align: left !important; border-top: 1px solid rgba(21, 71, 52, 0.1) !important; margin-top: 10px !important; }
+        /* --- STILE ICONE SOCIAL FOOTER --- */
+        .social-footer {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        .social-footer a {
+            color: var(--beige);
+            font-size: 2.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .social-footer a:hover {
+            color: var(--panna);
+            transform: translateY(-5px); 
         }
 
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
@@ -679,10 +464,6 @@
       
 <body>
 
-    <button class="pdf-btn" onclick="window.print()" title="Salva come PDF">
-        <i class="fa-solid fa-file-pdf"></i> Salva PDF
-    </button>
-
     <div class="hamburger-wrapper">
         <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Menu">
             <i class="fa-solid fa-bars"></i>
@@ -693,7 +474,7 @@
             <a href="#engagement" onclick="toggleMenu()">Engagement Rate</a>
             <a href="#collabs" onclick="toggleMenu()">Collaborazioni</a>
             <a href="#interviews" onclick="toggleMenu()">Interviews</a>
-            <a href="#contact" onclick="toggleMenu()">Get in touch</a>
+            <a href="#contact" onclick="toggleMenu()">Contact Us</a>
         </nav>
     </div>
 
@@ -719,49 +500,26 @@
             <button id="btn-90" class="toggle-btn" onclick="toggleTimeframe('90')">Ultimi 90 Giorni</button>
         </div>
 
-        <div class="timeframe-blocks-container">
-            <div id="ig-30-block" class="timeframe-block">
-                <h3 class="print-timeframe-title">Ultimi 30 Giorni</h3>
-                <div class="metrics-grid">
-                    <div class="stat-card">
-                        <span class="stat-num">120K</span>
-                        <span class="stat-label">IG Followers</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-num">564K</span>
-                        <span class="stat-label">Accounts Reached</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-num">1.94M</span>
-                        <span class="stat-label">Total Views</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-num">57.5%</span>
-                        <span class="stat-label">Non-Follower Reach</span>
-                    </div>
-                </div>
+        <div class="metrics-grid">
+            <div class="stat-card">
+                <i class="fa-solid fa-users"></i>
+                <span class="stat-num">119K</span>
+                <span class="stat-label">IG Followers</span>
             </div>
-            
-            <div id="ig-90-block" class="timeframe-block">
-                <h3 class="print-timeframe-title">Ultimi 90 Giorni</h3>
-                <div class="metrics-grid">
-                    <div class="stat-card">
-                        <span class="stat-num">120K</span>
-                        <span class="stat-label">IG Followers</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-num">1.46M</span>
-                        <span class="stat-label">Accounts Reached</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-num">5.89M</span>
-                        <span class="stat-label">Total Views</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-num">54.5%</span>
-                        <span class="stat-label">Non-Follower Reach</span>
-                    </div>
-                </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-satellite-dish"></i>
+                <span class="stat-num" id="ig-reach">564K</span>
+                <span class="stat-label">Accounts Reached</span>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-play"></i>
+                <span class="stat-num" id="ig-views">1.94M</span>
+                <span class="stat-label">Total Views</span>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-user-plus"></i>
+                <span class="stat-num" id="ig-nonfollowers">57.5%</span>
+                <span class="stat-label">Non-Follower Reach</span>
             </div>
         </div>
 
@@ -770,6 +528,7 @@
         
         <div class="metrics-grid">
             <div class="content-card">
+                <i class="fa-solid fa-venus-mars"></i>
                 <h4>Gender Split</h4>
                 <div style="display: flex; justify-content: space-between; margin-top: 15px; font-weight: 800; color: var(--toret-green); font-size: 1.2rem;">
                     <span>64.9% M</span>
@@ -782,6 +541,7 @@
             </div>
 
             <div class="content-card">
+                <i class="fa-solid fa-cake-candles"></i>
                 <h4>Top Age Groups</h4>
                 <ul class="audience-list">
                     <li>1. 25-34 Anni</li>
@@ -791,12 +551,15 @@
             </div>
 
             <div class="content-card">
+                <i class="fa-solid fa-location-dot"></i>
                 <h4>Audience Location</h4>
+                
                 <p class="audience-sub">Top Cities</p>
                 <ul class="audience-list" style="margin-top: 0;">
                     <li>📍 Torino</li>
                     <li>📍 Milano</li>
                 </ul>
+
                 <p class="audience-sub" style="margin-top: 15px;">Top Countries</p>
                 <ul class="audience-list" style="margin-top: 0;">
                     <li>🇮🇹 Italia</li>
@@ -806,14 +569,17 @@
         
         <div class="metrics-grid" style="margin-top: 40px;">
             <div class="content-card">
+                <i class="fa-solid fa-clapperboard"></i>
                 <h4>Reels</h4>
                 <div class="content-num" id="reach-reels">1.5M</div>
             </div>
             <div class="content-card">
+                <i class="fa-solid fa-circle-notch"></i>
                 <h4>Storie</h4>
                 <div class="content-num" id="reach-stories">300K</div>
             </div>
             <div class="content-card">
+                <i class="fa-solid fa-image"></i>
                 <h4>Post</h4>
                 <div class="content-num" id="reach-posts">100K</div>
             </div>
@@ -826,18 +592,22 @@
         
         <div class="metrics-grid">
             <div class="stat-card">
+                <i class="fa-brands fa-tiktok"></i>
                 <span class="stat-num">41.5K</span>
                 <span class="stat-label">TikTok Followers</span>
             </div>
             <div class="stat-card">
+                <i class="fa-solid fa-play"></i>
                 <span class="stat-num">5.7M</span>
                 <span class="stat-label">Video Views</span>
             </div>
             <div class="stat-card">
+                <i class="fa-solid fa-heart"></i>
                 <span class="stat-num">295.6K</span>
                 <span class="stat-label">Likes</span>
             </div>
             <div class="stat-card">
+                <i class="fa-solid fa-share"></i>
                 <span class="stat-num">23K</span>
                 <span class="stat-label">Shares</span>
             </div>
@@ -848,6 +618,7 @@
         
         <div class="metrics-grid">
             <div class="content-card">
+                <i class="fa-solid fa-venus-mars"></i>
                 <h4>Gender Split</h4>
                 <div style="display: flex; justify-content: space-between; margin-top: 15px; font-weight: 800; color: var(--toret-green); font-size: 1.2rem;">
                     <span>41.3% M</span>
@@ -860,6 +631,7 @@
             </div>
 
             <div class="content-card">
+                <i class="fa-solid fa-cake-candles"></i>
                 <h4>Top Age Groups</h4>
                 <ul class="audience-list">
                     <li>1. 18-24 Anni (44.5%)</li>
@@ -869,13 +641,16 @@
             </div>
 
             <div class="content-card">
+                <i class="fa-solid fa-location-dot"></i>
                 <h4>Audience Location</h4>
+                
                 <p class="audience-sub">Top Cities</p>
                 <ul class="audience-list" style="margin-top: 0;">
                     <li>📍 Torino (11.2%)</li>
                     <li>📍 Milano (8.7%)</li>
                     <li>📍 Roma (6.8%)</li>
                 </ul>
+
                 <p class="audience-sub" style="margin-top: 15px;">Top Countries</p>
                 <ul class="audience-list" style="margin-top: 0;">
                     <li>🇮🇹 Italia (94.6%)</li>
@@ -898,110 +673,118 @@
                 <div class="er-display" id="er-value">0.00%</div>
                 <p style="color: var(--toret-light); font-size: 0.9rem; margin: 0; font-weight: 600;">Dato stimato in base alle ultime interazioni</p>
             </div>
-
-            <div class="print-engagement-info">
-                <div class="print-er-row">
-                    <strong>Instagram Engagement Rate</strong>
-                    <span>5.32%</span>
-                </div>
-                <div class="print-er-row">
-                    <strong>TikTok Engagement Rate</strong>
-                    <span>6.85%</span>
-                </div>
-            </div>
         </div>
     </section>
 
-    <section id="collabs" class="section">
+  <section id="collabs" class="section">
         <h2 class="section-title">Main Collabs</h2>
         
         <h3 class="year-title">2026</h3>
         <div class="collab-grid">
             <div class="collab-card">
-                <h4 class="collab-brand">Reale Mutua & Teatro Regio</h4>
+                <div class="collab-brand">Reale Mutua & Teatro Regio</div>
                 <div class="collab-date">February 2026</div>
+                <a href="https://www.instagram.com/reel/DVMSL04gJKY/?igsh=bTBsZGZicTN1M2xr" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
-                <h4 class="collab-brand">Fiscozen</h4>
+                <div class="collab-brand">Fiscozen</div>
                 <div class="collab-date">April - May 2026</div>
+             <a href="https://www.instagram.com/reel/DXOxTCWDBG1/?igsh=MXBwOXZjMzZ0bWlmcw==" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+
             </div>
         </div>
 
         <h3 class="year-title">2025</h3>
         <div class="collab-grid">
             <div class="collab-card">
-                <h4 class="collab-brand">Caffarel</h4>
+                <div class="collab-brand">Caffarel</div>
                 <div class="collab-date">November 2025</div>
+                <a href="https://www.instagram.com/reel/DRpgE7ujEm0/?igsh=MWFqdHIyMTFkdHh5Ng==" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
-                <h4 class="collab-brand">Armando Testa – DimmidiSì</h4>
+                <div class="collab-brand">Armando Testa – DimmidiSì</div>
                 <div class="collab-date">Oct - Nov 2025</div>
+                <a href="https://www.instagram.com/p/DQg8bh-gGdE/?igsh=ZjJvbDdsZzd4dzN0" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
-                <h4 class="collab-brand">Starbucks</h4>
+                <div class="collab-brand">Starbucks</div>
                 <div class="collab-date">July 2025</div>
+               <a href="https://vm.tiktok.com/ZNRnv7tCY/" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
-                <h4 class="collab-brand">Braccialetti Aua</h4>
+                <div class="collab-brand">Braccialetti Aua</div>
                 <div class="collab-date">July 2025</div>
+                <a href="https://www.instagram.com/reels/DMGCVi4MLzW/" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
-                <h4 class="collab-brand">Lime (e-bike)</h4>
+                <div class="collab-brand">Lime (e-bike)</div>
                 <div class="collab-date">May 2025</div>
+                <a href="https://www.instagram.com/reel/DJcFHb6thNU/?igsh=bThrc3ozMHVvM3Jy" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
-                <h4 class="collab-brand">24 Bottles</h4>
+                <div class="collab-brand">24 Bottles</div>
                 <div class="collab-date">April 2025</div>
             </div>
             <div class="collab-card">
-                <h4 class="collab-brand">Centro Commerciale "Le Gru"</h4>
+                <div class="collab-brand">Centro Commerciale "Le Gru"</div>
                 <div class="collab-date">Feb - Dec 2025</div>
+                <a href="https://www.instagram.com/reel/DPqOhWbAKtf/?igsh=MjZmMnk1bmIxMzUy" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
 
         <h3 class="year-title">2024</h3>
         <div class="collab-grid">
             <div class="collab-card">
-                <h4 class="collab-brand">Centro Commerciale Le Fornaci</h4>
+                <div class="collab-brand">Centro Commerciale Le Fornaci</div>
                 <div class="collab-date">December 2024</div>
+                <a href="https://www.instagram.com/reel/DDMwWG6NF72/?igsh=M3k0Y2xjMTY2ODE2" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
-                <h4 class="collab-brand">Volontariato Torino ETS</h4>
+                <div class="collab-brand">Volontariato Torino ETS</div>
                 <div class="collab-date">December 2024</div>
+                <a href="https://www.instagram.com/reel/DDRW76gNgZA/?igsh=MTM3cG95MDBqZXJvbw==" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
-                <h4 class="collab-brand">Museo Nazionale del Cinema & TFF</h4>
+                <div class="collab-brand">Museo Nazionale del Cinema & TFF</div>
                 <div class="collab-date">November 2024</div>
+                <a href="https://www.instagram.com/reel/DC_4LFDNWMz/?igsh=aTEzODR5a3VtdHVk" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
-                <h4 class="collab-brand">Open Fiber</h4>
+                <div class="collab-brand">Open Fiber</div>
                 <div class="collab-date">Nov - Dec 2024</div>
+                <a href="https://www.instagram.com/reel/DCjcdARNkk5/?igsh=dGhzZGF3MmtmYmJh" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
-                <h4 class="collab-brand">Turismo Torino</h4>
+                <div class="collab-brand">Turismo Torino</div>
                 <div class="collab-date">Feb - Jun 2024</div>
+                     <a href="https://www.instagram.com/reels/C71ySISNL1J/" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+
             </div>
         </div>
 
         <h3 class="year-title">2023</h3>
         <div class="collab-grid">
             <div class="collab-card">
-                <h4 class="collab-brand">Intesa Sanpaolo & ATP Finals</h4>
+                <div class="collab-brand">Intesa Sanpaolo & ATP Finals</div>
                 <div class="collab-date">November 2023</div>
+                <a href="https://www.instagram.com/reel/CzovBEztNA9/?igsh=ZXNtN2U0M3d2ZGh6" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
-                <h4 class="collab-brand">Intesa Sanpaolo & Teatro Regio</h4>
+                <div class="collab-brand">Intesa Sanpaolo & Teatro Regio</div>
                 <div class="collab-date">October 2023</div>
+                <a href="https://www.instagram.com/reel/CxsYQ7atfae/?igsh=MWVoOGV0ZDhjcDc1ZQ==" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
     </section>
 
+    <!-- NUOVA SEZIONE INTERVISTE (EFFETTO CAROSELLO INFINITO) -->
     <section id="interviews" class="section">
-        <h2 class="section-title">Interviews</h2>
+        <h2 class="section-title">Interviews We Had the Pleasure to Do</h2>
         <div class="slider-container">
             <button class="arrow left-arrow" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
 
             <div class="reels-track" id="track">
+                <!-- I 15 Reel Originali -->
                 <div class="reel-item"><iframe src="https://www.instagram.com/reel/DJyZI4KNu0w/embed" scrolling="no" allowtransparency="true"></iframe></div>
                 <div class="reel-item"><iframe src="https://www.instagram.com/reel/DYeoeXSAI6c/embed" scrolling="no" allowtransparency="true"></iframe></div>
                 <div class="reel-item"><iframe src="https://www.instagram.com/reel/DYW9_b7sxdM/embed" scrolling="no" allowtransparency="true"></iframe></div>
@@ -1023,17 +806,15 @@
         </div>
     </section>
 
-    <section id="contact" class="contact-section">
-        <h2 class="contact-title">Get in touch</h2>
+   <!-- SEZIONE CONTATTI E FOOTER -->
+   <section id="contact" class="contact-section">
+        <div class="mail-icon-wrap">
+            <i class="fa-solid fa-envelope-open-text"></i>
+        </div>
+        <h2 class="contact-title">Contact Us</h2>
         <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px;">Pronto per la prossima collaborazione?</p>
         
         <a href="mailto:info@isidaurum.it" class="contact-btn">Let's chat!</a>
-
-        <div class="print-contact-info">
-            <p><i class="fa-solid fa-envelope"></i> Email: <strong>info@isidaurum.it</strong></p>
-            <p><i class="fa-brands fa-instagram"></i> Instagram: <strong>@isidaurum</strong></p>
-            <p><i class="fa-brands fa-tiktok"></i> TikTok: <strong>@isidaurum</strong></p>
-        </div>
 
         <div class="social-footer">
             <a href="https://www.instagram.com/isidaurum/" target="_blank" rel="noopener noreferrer" title="Instagram Profile">
@@ -1055,22 +836,22 @@
             document.getElementById('dropdownMenu').classList.toggle('active');
         }
 
-        // Funzione interruttore 30/90 giorni sdoppiata a livello di nodi per il PDF
         function toggleTimeframe(period) {
             document.getElementById('btn-30').classList.remove('active');
             document.getElementById('btn-90').classList.remove('active');
             document.getElementById('btn-' + period).classList.add('active');
 
             if (period === '30') {
-                document.getElementById('ig-30-block').style.display = 'block';
-                document.getElementById('ig-90-block').style.display = 'none';
+                document.getElementById('ig-reach').innerText = '564K';
+                document.getElementById('ig-views').innerText = '1.94M';
+                document.getElementById('ig-nonfollowers').innerText = '57.5%';
             } else {
-                document.getElementById('ig-30-block').style.display = 'none';
-                document.getElementById('ig-90-block').style.display = 'block';
+                document.getElementById('ig-reach').innerText = '1.46M';
+                document.getElementById('ig-views').innerText = '5.89M';
+                document.getElementById('ig-nonfollowers').innerText = '54.5%';
             }
         }
 
-        // Calcolatore Engagement Rate
         function showER() {
             const platform = document.getElementById('platform-select').value;
             const container = document.getElementById('result-container');
@@ -1092,29 +873,37 @@
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         
+        // Selezioniamo i 15 reel originali prima di aggiungere i cloni
         const originalReels = Array.from(document.querySelectorAll('.reel-item'));
-        const itemWidth = 335; 
+        const itemWidth = 335; // 320px (larghezza iframe) + 15px (gap)
+        
         const cloneCount = 4; 
         
         if (track && originalReels.length > 0) {
+            
+            // 1. Creiamo i cloni
             const firstClones = originalReels.slice(0, cloneCount).map(el => el.cloneNode(true));
             const lastClones = originalReels.slice(-cloneCount).map(el => el.cloneNode(true));
             
+            // Inseriamoli nel contenitore
             lastClones.forEach(clone => track.insertBefore(clone, track.firstChild));
             firstClones.forEach(clone => track.appendChild(clone));
             
+            // Aggiorniamo la lista con tutti gli elementi ora presenti
             const allReels = document.querySelectorAll('.reel-item');
 
+            // 2. Allineamento Iniziale 
             setTimeout(() => {
-                track.style.scrollBehavior = 'auto'; 
+                track.style.scrollBehavior = 'auto';
                 track.scrollLeft = cloneCount * itemWidth; 
                 
                 setTimeout(() => {
-                    track.style.scrollBehavior = 'smooth'; 
+                    track.style.scrollBehavior = 'smooth';
                     updateCarousel(); 
                 }, 50);
             }, 100);
 
+            // 3. Effetto Ingrandimento per il video al centro
             function updateCarousel() {
                 const trackRect = track.getBoundingClientRect();
                 const trackCenter = trackRect.left + trackRect.width / 2;
@@ -1145,6 +934,7 @@
                 });
             }
 
+            // 4. Logica di "Teletrasporto" invisibile
             function handleInfiniteScroll() {
                 const currentIndex = Math.round(track.scrollLeft / itemWidth);
                 
@@ -1162,22 +952,12 @@
                 }
             }
 
-            function stopAllIframes() {
-                const iframes = track.querySelectorAll('iframe');
-                iframes.forEach(iframe => {
-                    const currentSrc = iframe.getAttribute('src');
-                    iframe.setAttribute('src', '');
-                    iframe.setAttribute('src', currentSrc);
-                });
-            }
-
+            // Frecce direzionali
             nextBtn.addEventListener('click', () => {
-                stopAllIframes(); 
                 track.scrollBy({ left: itemWidth, behavior: 'smooth' });
             });
 
             prevBtn.addEventListener('click', () => {
-                stopAllIframes(); 
                 track.scrollBy({ left: -itemWidth, behavior: 'smooth' });
             });
 
