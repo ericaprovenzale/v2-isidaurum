@@ -235,7 +235,7 @@
             display: flex;
             overflow-x: auto;
             gap: 15px;
-            /* Il padding laterale dinamico fa sì che il primo e l'ultimo reel inizino e finiscano perfettamente al centro (50% - metà larghezza del reel) */
+            /* Il padding fa in modo che il video centrale si fermi perfettamente in mezzo */
             padding: 20px calc(50% - 160px); 
             scroll-behavior: smooth;
             scroll-snap-type: x mandatory;
@@ -765,13 +765,14 @@
         </div>
     </section>
 
-    <!-- NUOVA SEZIONE INTERVISTE (EFFETTO CAROSELLO) -->
+    <!-- NUOVA SEZIONE INTERVISTE (EFFETTO CAROSELLO INFINITO) -->
     <section id="interviews" class="section">
-        <h2 class="section-title">Interviews</h2>
+        <h2 class="section-title">Interviews We Had the Pleasure to Do</h2>
         <div class="slider-container">
             <button class="arrow left-arrow" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
 
             <div class="reels-track" id="track">
+                <!-- I 15 Reel Originali -->
                 <div class="reel-item"><iframe src="https://www.instagram.com/reel/DJyZI4KNu0w/embed" scrolling="no" allowtransparency="true"></iframe></div>
                 <div class="reel-item"><iframe src="https://www.instagram.com/reel/DYeoeXSAI6c/embed" scrolling="no" allowtransparency="true"></iframe></div>
                 <div class="reel-item"><iframe src="https://www.instagram.com/reel/DYW9_b7sxdM/embed" scrolling="no" allowtransparency="true"></iframe></div>
@@ -854,33 +855,51 @@
             }
         }
 
-        // --- SCRIPT PER LO SLIDER DEI REELS (EFFETTO CAROSELLO) ---
+        // --- SCRIPT PER LO SLIDER DEI REELS (EFFETTO LOOP INFINITO) ---
         const track = document.getElementById('track');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
-        const reels = document.querySelectorAll('.reel-item');
+        
+        // Selezioniamo i 15 reel originali prima di aggiungere i cloni
+        const originalReels = Array.from(document.querySelectorAll('.reel-item'));
+        const itemWidth = 335; // 320px (larghezza iframe) + 15px (gap)
+        
+        // Cloniamo 4 elementi per lato per rendere il salto completamente invisibile anche su schermi grandi
+        const cloneCount = 4; 
+        
+        if (track && originalReels.length > 0) {
+            
+            // 1. Creiamo i cloni
+            const firstClones = originalReels.slice(0, cloneCount).map(el => el.cloneNode(true));
+            const lastClones = originalReels.slice(-cloneCount).map(el => el.cloneNode(true));
+            
+            // Inseriamoli nel contenitore
+            lastClones.forEach(clone => track.insertBefore(clone, track.firstChild));
+            firstClones.forEach(clone => track.appendChild(clone));
+            
+            // Aggiorniamo la lista con tutti gli elementi ora presenti
+            const allReels = document.querySelectorAll('.reel-item');
 
-        // 320px (larghezza iframe) + 15px (gap) = 335px
-        const scrollAmount = 335; 
+            // 2. Allineamento Iniziale 
+            // Posizioniamoci sul VERO primo reel scartando i cloni finti iniziali
+            setTimeout(() => {
+                track.style.scrollBehavior = 'auto'; // Disabilita lo smooth scroll per il salto
+                track.scrollLeft = cloneCount * itemWidth; 
+                
+                setTimeout(() => {
+                    track.style.scrollBehavior = 'smooth'; // Riabilita lo smooth scroll
+                    updateCarousel(); 
+                }, 50);
+            }, 100);
 
-        if (nextBtn && prevBtn && track) {
-            // Frecce direzionali
-            nextBtn.addEventListener('click', () => {
-                track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            });
-
-            prevBtn.addEventListener('click', () => {
-                track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            });
-
-            // Funzione per calcolare quale reel è al centro e ingrandirlo
+            // 3. Effetto Ingrandimento per il video al centro
             function updateCarousel() {
                 const trackRect = track.getBoundingClientRect();
                 const trackCenter = trackRect.left + trackRect.width / 2;
                 let minDistance = Infinity;
                 let centerReel = null;
 
-                reels.forEach(reel => {
+                allReels.forEach(reel => {
                     const reelRect = reel.getBoundingClientRect();
                     const reelCenter = reelRect.left + reelRect.width / 2;
                     const distance = Math.abs(trackCenter - reelCenter);
@@ -891,14 +910,12 @@
                     }
                 });
 
-                reels.forEach(reel => {
+                allReels.forEach(reel => {
                     if (reel === centerReel) {
-                        // Reel Centrale Ingrandito
                         reel.style.transform = 'scale(1)';
                         reel.style.opacity = '1';
                         reel.style.zIndex = '2';
                     } else {
-                        // Reel Laterali Rimpiccioliti
                         reel.style.transform = 'scale(0.85)';
                         reel.style.opacity = '0.5';
                         reel.style.zIndex = '1';
@@ -906,12 +923,50 @@
                 });
             }
 
-            // Ascolta lo scorrimento e ridimensionamento
+            // 4. Logica di "Teletrasporto" invisibile
+            function handleInfiniteScroll() {
+                const currentIndex = Math.round(track.scrollLeft / itemWidth);
+                
+                // Se l'utente è arrivato ai cloni di sinistra
+                if (currentIndex < cloneCount) {
+                    track.style.scrollBehavior = 'auto';
+                    // Salto invisibile verso la corrispondenza a destra
+                    track.scrollLeft = (currentIndex + originalReels.length) * itemWidth;
+                    void track.offsetWidth; // Forza il browser a processare il salto immediatamente
+                    track.style.scrollBehavior = 'smooth';
+                } 
+                // Se l'utente è arrivato ai cloni di destra
+                else if (currentIndex >= originalReels.length + cloneCount) {
+                    track.style.scrollBehavior = 'auto';
+                    // Salto invisibile verso la corrispondenza a sinistra
+                    track.scrollLeft = (currentIndex - originalReels.length) * itemWidth;
+                    void track.offsetWidth;
+                    track.style.scrollBehavior = 'smooth';
+                }
+            }
+
+            // Frecce direzionali
+            nextBtn.addEventListener('click', () => {
+                track.scrollBy({ left: itemWidth, behavior: 'smooth' });
+            });
+
+            prevBtn.addEventListener('click', () => {
+                track.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+            });
+
+            // L'effetto di ingrandimento si aggiorna mentre scorri
             track.addEventListener('scroll', updateCarousel);
-            window.addEventListener('resize', updateCarousel);
             
-            // Inizializza l'effetto al caricamento
-            setTimeout(updateCarousel, 100);
+            // Il trucco del teletrasporto parte un attimo dopo che hai finito di scorrere
+            let scrollTimeout;
+            track.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    handleInfiniteScroll();
+                }, 150);
+            });
+
+            window.addEventListener('resize', updateCarousel);
         }
     </script>
 </body>
