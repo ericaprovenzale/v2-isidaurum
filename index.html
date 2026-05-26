@@ -364,6 +364,42 @@
             50% { transform: scale(1.1); opacity: 0.8; }
             100% { transform: scale(1); opacity: 1; }
         }
+        /* Crea un cerchio che segue il mouse */
+.cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--toret-green);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 99999;
+    transition: transform 0.1s ease;
+}
+
+/* Quando entra nelle aree verdi, il cursore diventa beige */
+.hero:hover ~ .cursor, .contact-section:hover ~ .cursor {
+    border-color: var(--beige);
+}
+        /* Stile del cursore moderno */
+.cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--toret-green);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none; /* Fondamentale: non blocca i click */
+    z-index: 99999;
+    transition: transform 0.1s ease-out, width 0.2s ease, height 0.2s ease;
+    will-change: transform;
+}
+
+/* Quando il cursore si muove velocemente, lo facciamo ingigantire */
+.cursor.is-moving {
+    transform: scale(1.5);
+    width: 30px;
+    height: 30px;
+    opacity: 0.6;
+}
     </style>
 </head>
 <body>
@@ -733,5 +769,33 @@
             }
         }
     </script>
+    <div class="cursor"></div>
+
+<script>
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove', e => {
+        cursor.setAttribute("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px;")
+    })
+</script>
+    <div class="cursor" id="cursor"></div>
+
+<script>
+    const cursor = document.getElementById('cursor');
+    let timeout;
+
+    document.addEventListener('mousemove', (e) => {
+        // Posizionamento fluido
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+
+        // Logica per l'espansione al movimento veloce
+        cursor.classList.add('is-moving');
+        
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            cursor.classList.remove('is-moving');
+        }, 100);
+    });
+</script>
 </body>
 </html>
