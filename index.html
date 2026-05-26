@@ -89,6 +89,38 @@
             padding-left: 30px;
         }
 
+        /* --- BOTTONE SALVA PDF --- */
+        .pdf-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: var(--toret-green);
+            color: var(--panna);
+            border: none;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 9999;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .pdf-btn:hover {
+            transform: scale(1.05) translateY(-5px);
+            background-color: var(--toret-light);
+        }
+
+        /* --- INFO SOLO PER STAMPA/PDF --- */
+        .print-contact-info,
+        .print-engagement-info {
+            display: none;
+        }
+
         /* --- SEZIONE HERO CON STRATI MULTIPLI --- */
         .hero {
             height: 100vh;
@@ -235,7 +267,6 @@
             display: flex;
             overflow-x: auto;
             gap: 15px;
-            /* Il padding fa in modo che il video centrale si fermi perfettamente in mezzo */
             padding: 20px calc(50% - 160px); 
             scroll-behavior: smooth;
             scroll-snap-type: x mandatory;
@@ -258,10 +289,9 @@
             justify-content: center;
             align-items: center;
             
-            /* Proprietà per l'effetto di rimpicciolimento dinamico */
             transition: transform 0.4s ease, opacity 0.4s ease;
-            transform: scale(0.85); /* Di base sono piccoli */
-            opacity: 0.5;           /* Di base sono semi-trasparenti */
+            transform: scale(0.85);
+            opacity: 0.5;           
             z-index: 1;
         }
 
@@ -440,6 +470,221 @@
             transform: translateY(-5px); 
         }
 
+        /* =========================================
+           STILI SPECIFICI PER L'ESPORTAZIONE IN PDF
+           ========================================= */
+        @media print {
+            @page {
+                size: portrait;
+                margin: 12mm 10mm;
+            }
+
+            /* RIMOZIONE SFONDI (DOCUMENTO SU FOGLIO BIANCO PULITO) */
+            body, html, .section, .hero, .contact-section, #tiktok, footer {
+                background: #ffffff !important;
+                background-color: #ffffff !important;
+                background-image: none !important;
+                color: var(--text-dark) !important;
+                -webkit-print-color-adjust: economy !important;
+                print-color-adjust: economy !important;
+                font-size: 10pt !important;
+            }
+
+            /* COMPATTAZIONE DEGLI SPAZI VERTICALI PER EVITARE SPAZI BIANCHI */
+            .section {
+                padding: 15px 0 !important;
+            }
+
+            /* BLOCCO DEI TITOLI ORFANI: COSTRINGE IL TITOLO A RIMANERE SEMPRE INSIEME AI DATI SUCCESSIVI */
+            .section-title, .section-subtitle, .year-title, h2, h3 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+            }
+
+            /* Nasconde gli elementi interattivi web e l'intera sezione interviste */
+            .hamburger-wrapper,
+            .pdf-btn,
+            .scroll-down,
+            .toggle-container,
+            .arrow,
+            .social-footer,
+            .contact-btn,
+            .select-style,
+            #result-container,
+            #interviews,
+            .collab-link {
+                display: none !important;
+            }
+
+            /* RIQUADRI LEGGERI: SOLO CONTORNO VERDE SENZA RIEMPIMENTI PIENI */
+            .stat-card, 
+            .content-card, 
+            .collab-card, 
+            .engagement-box, 
+            .contact-section {
+                background: #ffffff !important;
+                background-color: #ffffff !important;
+                border: 1.5px solid var(--toret-green) !important;
+                box-shadow: none !important;
+                border-radius: 12px !important;
+                padding: 15px !important;
+            }
+
+            /* OTTIMIZZAZIONE DELLE GRIGLIE PER STAMPA */
+            .metrics-grid, .collab-grid {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
+                gap: 10px !important;
+            }
+
+            /* Rimpicciolimento controllato e leggibile dei testi */
+            .section-title {
+                font-size: 15pt !important;
+                margin-top: 10px !important;
+                margin-bottom: 8px !important;
+                color: var(--toret-green) !important;
+            }
+            .section-subtitle {
+                font-size: 9.5pt !important;
+                margin-top: -6px !important;
+                margin-bottom: 15px !important;
+            }
+            .stat-num {
+                font-size: 20pt !important;
+                color: var(--toret-green) !important;
+            }
+            .stat-label {
+                font-size: 8pt !important;
+                letter-spacing: 0.5px !important;
+            }
+            .content-card h4 {
+                font-size: 9.5pt !important;
+                margin-bottom: 4px !important;
+            }
+            .content-num {
+                font-size: 15pt !important;
+                color: var(--toret-green) !important;
+            }
+            .audience-list {
+                font-size: 9pt !important;
+                margin-top: 4px !important;
+            }
+
+            .year-title {
+                border-bottom: 1px solid var(--toret-green) !important;
+                color: var(--toret-green) !important;
+                font-size: 12pt !important;
+                margin-top: 15px !important;
+                margin-bottom: 8px !important;
+                padding-bottom: 3px !important;
+            }
+            .collab-brand { font-size: 9.5pt !important; }
+            .collab-date { font-size: 8pt !important; }
+
+            /* ENGAGEMENT RATE SEMPRE VISIBILI SU RIGHE PULITE */
+            .print-engagement-info {
+                display: block !important;
+                margin: 5px auto 0 auto;
+                max-width: 450px;
+                text-align: left;
+            }
+            .print-er-row {
+                display: flex;
+                justify-content: space-between;
+                padding: 5px 0;
+                border-bottom: 1px dashed rgba(21, 71, 52, 0.2);
+                font-size: 10.5pt !important;
+            }
+            .print-er-row strong, .print-er-row span { color: var(--toret-green) !important; font-weight: 800; }
+
+            .progress-bar-bg {
+                display: none !important;
+            }
+
+            /* INTESTAZIONE HERO IN ALTO A SINISTRA */
+            .hero {
+                height: auto !important;
+                min-height: auto !important;
+                padding: 5px 0 15px 0 !important;
+                margin-bottom: 5px !important;
+                border-bottom: 1px solid rgba(21, 71, 52, 0.1) !important;
+            }
+            .hero-content {
+                display: block !important;
+                text-align: left !important;
+                width: 100% !important;
+            }
+            .profile-container {
+                display: inline-block !important;
+                vertical-align: middle !important;
+                margin-bottom: 0 !important;
+                margin-right: 15px !important;
+            }
+            .profile-pic {
+                width: 65px !important;
+                height: 65px !important;
+                border: 2px solid var(--toret-green) !important;
+                padding: 1px !important;
+                background: #ffffff !important;
+            }
+            .hero h1 {
+                display: inline-block !important;
+                vertical-align: middle !important;
+                font-size: 20pt !important;
+                margin: 0 !important;
+                color: var(--toret-green) !important;
+                text-shadow: none !important;
+            }
+            .hero p {
+                display: block !important; 
+                margin-top: 6px !important;
+                font-size: 10pt !important;
+                color: var(--text-muted) !important;
+                text-shadow: none !important;
+                text-align: left !important;
+            }
+
+            .mail-icon-wrap {
+                color: var(--toret-green) !important;
+                font-size: 2.2rem !important;
+                margin-bottom: 10px !important;
+                animation: none !important;
+            }
+            .contact-title {
+                color: var(--toret-green) !important;
+                font-size: 15pt !important;
+            }
+            .print-contact-info {
+                display: block !important;
+                margin-top: 10px;
+                font-size: 10pt !important;
+                line-height: 1.5;
+            }
+            .print-contact-info p { color: var(--text-dark) !important; }
+            .print-contact-info strong { color: var(--toret-green) !important; }
+            
+            footer {
+                padding: 15px !important;
+                font-size: 8pt !important;
+                background: #ffffff !important;
+                color: var(--text-muted) !important;
+            }
+
+            /* BLOCCA LE INTERRUZIONI SOLO SUI SINGOLI RIQUADRI INTERNI */
+            .stat-card, 
+            .content-card, 
+            .collab-card, 
+            .engagement-box, 
+            .contact-section {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            
+            .section {
+                page-break-inside: auto !important;
+                break-inside: auto !important;
+            }
+        }
+
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes pulse-mail {
@@ -451,6 +696,10 @@
 </head>  
       
 <body>
+
+    <button class="pdf-btn" onclick="window.print()" title="Salva come PDF">
+        <i class="fa-solid fa-file-pdf"></i> Salva PDF
+    </button>
 
     <div class="hamburger-wrapper">
         <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Menu">
@@ -661,10 +910,21 @@
                 <div class="er-display" id="er-value">0.00%</div>
                 <p style="color: var(--toret-light); font-size: 0.9rem; margin: 0; font-weight: 600;">Dato stimato in base alle ultime interazioni</p>
             </div>
+
+            <div class="print-engagement-info">
+                <div class="print-er-row">
+                    <strong>Instagram Engagement Rate</strong>
+                    <span>5.32%</span>
+                </div>
+                <div class="print-er-row">
+                    <strong>TikTok Engagement Rate</strong>
+                    <span>6.85%</span>
+                </div>
+            </div>
         </div>
     </section>
 
-  <section id="collabs" class="section">
+    <section id="collabs" class="section">
         <h2 class="section-title">Main Collabs</h2>
         
         <h3 class="year-title">2026</h3>
@@ -677,8 +937,7 @@
             <div class="collab-card">
                 <div class="collab-brand">Fiscozen</div>
                 <div class="collab-date">April - May 2026</div>
-             <a href="https://www.instagram.com/reel/DXOxTCWDBG1/?igsh=MXBwOXZjMzZ0bWlmcw==" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-
+                <a href="https://www.instagram.com/reel/DXOxTCWDBG1/?igsh=MXBwOXZjMzZ0bWlmcw==" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
 
@@ -697,7 +956,7 @@
             <div class="collab-card">
                 <div class="collab-brand">Starbucks</div>
                 <div class="collab-date">July 2025</div>
-               <a href="https://vm.tiktok.com/ZNRnv7tCY/" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://vm.tiktok.com/ZNRnv7tCY/" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
                 <div class="collab-brand">Braccialetti Aua</div>
@@ -745,8 +1004,7 @@
             <div class="collab-card">
                 <div class="collab-brand">Turismo Torino</div>
                 <div class="collab-date">Feb - Jun 2024</div>
-                     <a href="https://www.instagram.com/reels/C71ySISNL1J/" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-
+                <a href="https://www.instagram.com/reels/C71ySISNL1J/" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
 
@@ -765,14 +1023,12 @@
         </div>
     </section>
 
-    <!-- NUOVA SEZIONE INTERVISTE (EFFETTO CAROSELLO INFINITO) -->
     <section id="interviews" class="section">
         <h2 class="section-title">Interviews</h2>
         <div class="slider-container">
             <button class="arrow left-arrow" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
 
             <div class="reels-track" id="track">
-                <!-- I 15 Reel Originali -->
                 <div class="reel-item"><iframe src="https://www.instagram.com/reel/DJyZI4KNu0w/embed" scrolling="no" allowtransparency="true"></iframe></div>
                 <div class="reel-item"><iframe src="https://www.instagram.com/reel/DYeoeXSAI6c/embed" scrolling="no" allowtransparency="true"></iframe></div>
                 <div class="reel-item"><iframe src="https://www.instagram.com/reel/DYW9_b7sxdM/embed" scrolling="no" allowtransparency="true"></iframe></div>
@@ -794,7 +1050,7 @@
         </div>
     </section>
 
-   <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section">
         <div class="mail-icon-wrap">
             <i class="fa-solid fa-envelope-open-text"></i>
         </div>
@@ -802,6 +1058,12 @@
         <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px;">Pronto per la prossima collaborazione?</p>
         
         <a href="mailto:info@isidaurum.it" class="contact-btn">Let's chat!</a>
+
+        <div class="print-contact-info">
+            <p><i class="fa-solid fa-envelope"></i> Email: <strong>info@isidaurum.it</strong></p>
+            <p><i class="fa-brands fa-instagram"></i> Instagram: <strong>@isidaurum</strong></p>
+            <p><i class="fa-brands fa-tiktok"></i> TikTok: <strong>@isidaurum</strong></p>
+        </div>
 
         <div class="social-footer">
             <a href="https://www.instagram.com/isidaurum/" target="_blank" rel="noopener noreferrer" title="Instagram Profile">
@@ -839,6 +1101,7 @@
             }
         }
 
+        // Calcolatore Engagement Rate
         function showER() {
             const platform = document.getElementById('platform-select').value;
             const container = document.getElementById('result-container');
@@ -860,39 +1123,29 @@
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         
-        // Selezioniamo i 15 reel originali prima di aggiungere i cloni
         const originalReels = Array.from(document.querySelectorAll('.reel-item'));
-        const itemWidth = 335; // 320px (larghezza iframe) + 15px (gap)
-        
-        // Cloniamo 4 elementi per lato per rendere il salto completamente invisibile anche su schermi grandi
+        const itemWidth = 335; 
         const cloneCount = 4; 
         
         if (track && originalReels.length > 0) {
-            
-            // 1. Creiamo i cloni
             const firstClones = originalReels.slice(0, cloneCount).map(el => el.cloneNode(true));
             const lastClones = originalReels.slice(-cloneCount).map(el => el.cloneNode(true));
             
-            // Inseriamoli nel contenitore
             lastClones.forEach(clone => track.insertBefore(clone, track.firstChild));
             firstClones.forEach(clone => track.appendChild(clone));
             
-            // Aggiorniamo la lista con tutti gli elementi ora presenti
             const allReels = document.querySelectorAll('.reel-item');
 
-            // 2. Allineamento Iniziale 
-            // Posizioniamoci sul VERO primo reel scartando i cloni finti iniziali
             setTimeout(() => {
-                track.style.scrollBehavior = 'auto'; // Disabilita lo smooth scroll per il salto
+                track.style.scrollBehavior = 'auto'; 
                 track.scrollLeft = cloneCount * itemWidth; 
                 
                 setTimeout(() => {
-                    track.style.scrollBehavior = 'smooth'; // Riabilita lo smooth scroll
+                    track.style.scrollBehavior = 'smooth'; 
                     updateCarousel(); 
                 }, 50);
             }, 100);
 
-            // 3. Effetto Ingrandimento per il video al centro
             function updateCarousel() {
                 const trackRect = track.getBoundingClientRect();
                 const trackCenter = trackRect.left + trackRect.width / 2;
@@ -923,29 +1176,23 @@
                 });
             }
 
-            // 4. Logica di "Teletrasporto" invisibile
             function handleInfiniteScroll() {
                 const currentIndex = Math.round(track.scrollLeft / itemWidth);
                 
-                // Se l'utente è arrivato ai cloni di sinistra
                 if (currentIndex < cloneCount) {
                     track.style.scrollBehavior = 'auto';
-                    // Salto invisibile verso la corrispondenza a destra
                     track.scrollLeft = (currentIndex + originalReels.length) * itemWidth;
-                    void track.offsetWidth; // Forza il browser a processare il salto immediatamente
+                    void track.offsetWidth; 
                     track.style.scrollBehavior = 'smooth';
                 } 
-                // Se l'utente è arrivato ai cloni di destra
                 else if (currentIndex >= originalReels.length + cloneCount) {
                     track.style.scrollBehavior = 'auto';
-                    // Salto invisibile verso la corrispondenza a sinistra
                     track.scrollLeft = (currentIndex - originalReels.length) * itemWidth;
                     void track.offsetWidth;
                     track.style.scrollBehavior = 'smooth';
                 }
             }
 
-            // Frecce direzionali
             nextBtn.addEventListener('click', () => {
                 track.scrollBy({ left: itemWidth, behavior: 'smooth' });
             });
@@ -954,10 +1201,8 @@
                 track.scrollBy({ left: -itemWidth, behavior: 'smooth' });
             });
 
-            // L'effetto di ingrandimento si aggiorna mentre scorri
             track.addEventListener('scroll', updateCarousel);
             
-            // Il trucco del teletrasporto parte un attimo dopo che hai finito di scorrere
             let scrollTimeout;
             track.addEventListener('scroll', () => {
                 clearTimeout(scrollTimeout);
