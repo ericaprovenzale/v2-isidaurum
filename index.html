@@ -378,9 +378,6 @@
 
         .select-style:focus { background-color: var(--toret-green); color: var(--panna); }
 
-        .result-box { display: none; animation: fadeIn 0.5s ease; }
-        .er-display { font-size: 5rem; font-weight: 800; color: var(--toret-green); margin: 10px 0; }
-
         /* --- SEZIONE COLLABORAZIONI --- */
         .year-title {
             color: var(--toret-green);
@@ -489,6 +486,8 @@
             .section {
                 padding: 4px 0 !important;
                 margin: 0 !important;
+                background: none !important; /* Forza rimozione sfondi web in stampa */
+                border-radius: 0 !important;
             }
 
             /* FORZATURA ASSOLUTA: TIKTOK INIZIA RIGIDAMENTE IN PAGINA 2 */
@@ -799,7 +798,7 @@
         </a>
     </section>
     
-    <section id="instagram" class="section">
+    <section id="instagram" class="section" style="background-color: rgba(235, 227, 213, 0.3); border-radius: 40px; padding-bottom: 60px;">
         <h2 class="section-title">Instagram Insights</h2>
         
         <div class="toggle-container">
@@ -1112,9 +1111,6 @@
     </section>
 
     <section id="contact" class="contact-section">
-        <div class="mail-icon-wrap">
-            <i class="fa-solid fa-envelope-open-text"></i>
-        </div>
         <h2 class="contact-title">Get in touch</h2>
         <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px;">Pronto per la prossima collaborazione?</p>
         
@@ -1141,10 +1137,12 @@
     </footer>
 
     <script>
+        // Funzione Menu a tendina
         function toggleMenu() {
             document.getElementById('dropdownMenu').classList.toggle('active');
         }
 
+        // Funzione interruttore 30/90 giorni sdoppiata a livello di nodi per il PDF
         function toggleTimeframe(period) {
             document.getElementById('btn-30').classList.remove('active');
             document.getElementById('btn-90').classList.remove('active');
@@ -1159,6 +1157,7 @@
             }
         }
 
+        // Calcolatore Engagement Rate
         function showER() {
             const platform = document.getElementById('platform-select').value;
             const container = document.getElementById('result-container');
@@ -1175,6 +1174,7 @@
             }
         }
 
+        // --- SCRIPT PER LO SLIDER DEI REELS (EFFETTO LOOP INFINITO) ---
         const track = document.getElementById('track');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
