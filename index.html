@@ -221,6 +221,89 @@
         .audience-list li:last-child { border-bottom: none; }
         .audience-sub { color: var(--text-muted); font-size: 0.9rem; font-weight: 700; margin-top: 15px; margin-bottom: 5px; text-align: left; max-width: 200px; margin-left: auto; margin-right: auto; }
 
+        /* --- SLIDER REELS EFFETTO CAROSELLO --- */
+        .slider-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin: 40px auto 0;
+            overflow: visible;
+        }
+
+        .reels-track {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            /* Il padding laterale dinamico fa sì che il primo e l'ultimo reel inizino e finiscano perfettamente al centro (50% - metà larghezza del reel) */
+            padding: 20px calc(50% - 160px); 
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; 
+        }
+        
+        .reels-track::-webkit-scrollbar {
+            display: none; 
+        }
+
+        .reel-item {
+            flex: 0 0 320px; 
+            height: 540px;   
+            background-color: var(--panna); 
+            border-radius: 12px;
+            overflow: hidden; 
+            scroll-snap-align: center; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            /* Proprietà per l'effetto di rimpicciolimento dinamico */
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            transform: scale(0.85); /* Di base sono piccoli */
+            opacity: 0.5;           /* Di base sono semi-trasparenti */
+            z-index: 1;
+        }
+
+        .reel-item iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--toret-green);
+            color: var(--panna);
+            border: none;
+            font-size: 20px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .arrow:hover {
+            background-color: var(--toret-light);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .left-arrow { left: -25px; } 
+        .right-arrow { right: -25px; }
+
+        @media (max-width: 1050px) {
+            .left-arrow { left: 10px; }
+            .right-arrow { right: 10px; }
+        }
+
         /* --- CALCOLATORE ENGAGEMENT --- */
         .engagement-box {
             background: var(--beige);
@@ -364,8 +447,8 @@
             50% { transform: scale(1.1); opacity: 0.8; }
             100% { transform: scale(1); opacity: 1; }
         }
-            </style> 
-    </head>  
+    </style> 
+</head>  
       
 <body>
 
@@ -378,6 +461,7 @@
             <a href="#tiktok" onclick="toggleMenu()">TikTok</a>
             <a href="#engagement" onclick="toggleMenu()">Engagement Rate</a>
             <a href="#collabs" onclick="toggleMenu()">Collaborazioni</a>
+            <a href="#interviews" onclick="toggleMenu()">Interviews</a>
             <a href="#contact" onclick="toggleMenu()">Contact Us</a>
         </nav>
     </div>
@@ -681,6 +765,34 @@
         </div>
     </section>
 
+    <!-- NUOVA SEZIONE INTERVISTE (EFFETTO CAROSELLO) -->
+    <section id="interviews" class="section">
+        <h2 class="section-title">Interviews</h2>
+        <div class="slider-container">
+            <button class="arrow left-arrow" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+
+            <div class="reels-track" id="track">
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DJyZI4KNu0w/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DYeoeXSAI6c/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DYW9_b7sxdM/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DX7MUDDgmyD/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DP9Xfd9DLFd/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DJ3tw7JNqw3/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DDANsM4N-n7/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/C-P80oFtHVQ/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/C68czOON4NZ/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/Cs3cHGBrgNZ/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/CsZQZf7MAHd/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/CsjnsHtP20C/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/CrTib9CvRcq/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/Co9r3-UjECV/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/CoZqB0eMZGI/embed" scrolling="no" allowtransparency="true"></iframe></div>
+            </div>
+
+            <button class="arrow right-arrow" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </section>
+
    <section id="contact" class="contact-section">
         <div class="mail-icon-wrap">
             <i class="fa-solid fa-envelope-open-text"></i>
@@ -740,6 +852,66 @@
             } else {
                 container.style.display = 'none';
             }
+        }
+
+        // --- SCRIPT PER LO SLIDER DEI REELS (EFFETTO CAROSELLO) ---
+        const track = document.getElementById('track');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const reels = document.querySelectorAll('.reel-item');
+
+        // 320px (larghezza iframe) + 15px (gap) = 335px
+        const scrollAmount = 335; 
+
+        if (nextBtn && prevBtn && track) {
+            // Frecce direzionali
+            nextBtn.addEventListener('click', () => {
+                track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            prevBtn.addEventListener('click', () => {
+                track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            // Funzione per calcolare quale reel è al centro e ingrandirlo
+            function updateCarousel() {
+                const trackRect = track.getBoundingClientRect();
+                const trackCenter = trackRect.left + trackRect.width / 2;
+                let minDistance = Infinity;
+                let centerReel = null;
+
+                reels.forEach(reel => {
+                    const reelRect = reel.getBoundingClientRect();
+                    const reelCenter = reelRect.left + reelRect.width / 2;
+                    const distance = Math.abs(trackCenter - reelCenter);
+                    
+                    if(distance < minDistance) {
+                        minDistance = distance;
+                        centerReel = reel;
+                    }
+                });
+
+                reels.forEach(reel => {
+                    if (reel === centerReel) {
+                        // Reel Centrale Ingrandito
+                        reel.style.transform = 'scale(1)';
+                        reel.style.opacity = '1';
+                        reel.style.zIndex = '2';
+                    } else {
+                        // Reel Laterali Rimpiccioliti
+                        reel.style.transform = 'scale(0.85)';
+                        reel.style.opacity = '0.5';
+                        reel.style.zIndex = '1';
+                    }
+                });
+            }
+
+            // Ascolta lo scorrimento e ridimensionamento
+            track.addEventListener('scroll', updateCarousel);
+            window.addEventListener('resize', updateCarousel);
+            
+            // Inizializza l'effetto al caricamento
+            setTimeout(updateCarousel, 100);
         }
     </script>
 </body>
