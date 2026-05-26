@@ -531,17 +531,26 @@
                 /* SICUREZZA ASSOLUTA CONTRO I TAGLI A METÀ PAGINA */
                 page-break-inside: avoid !important;
                 break-inside: avoid !important;
-                display: block !important; /* Forza blocco standard per aggirare bug dei motori di stampa su grid/flex */
             }
 
-            /* DISATTIVAZIONE GRIGLIE IN STAMPA PER NON ROMPERE I BREAK-INSIDE */
+            /* --- OTTIMIZZAZIONE SU DUE COLONNE AFFIANCATE PER LA STAMPA --- */
             .metrics-grid, .collab-grid {
-                display: block !important;
+                display: block !important; /* Disattiva grid nativo che bugga in stampa */
+                clear: both !important;
             }
+            
             .stat-card, .content-card, .collab-card {
+                display: inline-block !important; /* Affianca gli elementi */
+                vertical-align: top !important;
+                width: 49% !important; /* Due colonne perfette */
+                margin-right: 2% !important; /* Distanza tra le colonne */
                 margin-bottom: 12px !important;
-                width: 100% !important;
                 box-sizing: border-box !important;
+            }
+
+            /* Rimuove il margine destro per il secondo elemento di ogni riga per evitare accapo errati */
+            .stat-card:nth-child(2n), .content-card:nth-child(2n), .collab-card:nth-child(2n) {
+                margin-right: 0 !important;
             }
 
             /* Rimpicciolimento controllato e leggibile dei testi */
@@ -1191,7 +1200,7 @@
                 }
             }
 
-            // Funzione per fermare l'audio e l'esecuzione di qualsiasi iframe attivo ri-caricando il suo link
+            // Funzione per fermare l'audio e l'esecuzione di qualsiasi iframe attivo
             function stopAllIframes() {
                 const iframes = track.querySelectorAll('iframe');
                 iframes.forEach(iframe => {
@@ -1202,12 +1211,12 @@
             }
 
             nextBtn.addEventListener('click', () => {
-                stopAllIframes(); // Ferma l'audio prima dello scorrimento
+                stopAllIframes(); 
                 track.scrollBy({ left: itemWidth, behavior: 'smooth' });
             });
 
             prevBtn.addEventListener('click', () => {
-                stopAllIframes(); // Ferma l'audio prima dello scorrimento
+                stopAllIframes(); 
                 track.scrollBy({ left: -itemWidth, behavior: 'smooth' });
             });
 
