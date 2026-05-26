@@ -364,22 +364,7 @@
             50% { transform: scale(1.1); opacity: 0.8; }
             100% { transform: scale(1); opacity: 1; }
         }
-        /* Crea un cerchio che segue il mouse */
-.cursor {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--toret-green);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 99999;
-    transition: transform 0.1s ease;
-}
-
-/* Quando entra nelle aree verdi, il cursore diventa beige */
-.hero:hover ~ .cursor, .contact-section:hover ~ .cursor {
-    border-color: var(--beige);
-}
+      
         /* Stile del cursore moderno */
 .cursor {
     width: 20px;
