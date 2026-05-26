@@ -213,4 +213,1073 @@
             color: var(--panna);
         }
 
-        /* --- SE
+        /* --- SEZIONE METRICHE E CARDS --- */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--beige);
+            padding: 40px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .stat-card:hover { border-color: var(--toret-green); transform: translateY(-10px); }
+        .stat-card i { font-size: 2rem; color: var(--toret-green); margin-bottom: 15px; }
+        .stat-num { font-size: 3rem; font-weight: 800; display: block; color: var(--toret-green); transition: 0.3s; }
+        .stat-label { color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-size: 0.9rem;}
+
+        .content-card {
+            background: var(--panna);
+            border: 2px solid var(--beige);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .content-card:hover { border-color: var(--toret-light); transform: translateY(-5px); }
+        .content-card i { font-size: 2.5rem; color: var(--toret-light); margin-bottom: 15px; }
+        .content-card h4 { margin: 0 0 10px 0; color: var(--text-dark); font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+        .content-num { font-size: 2.2rem; font-weight: 800; color: var(--toret-green); }
+
+        /* --- AUDIENCE LISTS E BARRE --- */
+        .progress-bar-bg {
+            width: 100%;
+            background: #d5cfc4;
+            height: 12px;
+            border-radius: 6px;
+            margin-top: 15px;
+            display: flex;
+            overflow: hidden;
+        }
+        .progress-fill-m { background: var(--toret-green); height: 100%; }
+        .progress-fill-f { background: var(--toret-light); height: 100%; }
+        
+        .audience-list { list-style: none; padding: 0; text-align: left; margin: 15px auto 0 auto; max-width: 200px; color: var(--toret-green); font-weight: 700; font-size: 1.1rem; }
+        .audience-list li { margin-bottom: 12px; border-bottom: 1px solid rgba(21, 71, 52, 0.1); padding-bottom: 5px; }
+        .audience-list li:last-child { border-bottom: none; }
+        .audience-sub { color: var(--text-muted); font-size: 0.9rem; font-weight: 700; margin-top: 15px; margin-bottom: 5px; text-align: left; max-width: 200px; margin-left: auto; margin-right: auto; }
+
+        /* --- SLIDER REELS EFFETTO CAROSELLO --- */
+        .slider-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin: 40px auto 0;
+            overflow: visible;
+        }
+
+        .reels-track {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 20px calc(50% - 160px); 
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; 
+        }
+        
+        .reels-track::-webkit-scrollbar {
+            display: none; 
+        }
+
+        .reel-item {
+            flex: 0 0 320px; 
+            height: 540px;   
+            background-color: var(--panna); 
+            border-radius: 12px;
+            overflow: hidden; 
+            scroll-snap-align: center; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            transform: scale(0.85);
+            opacity: 0.5;           
+            z-index: 1;
+        }
+
+        .reel-item iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--toret-green);
+            color: var(--panna);
+            border: none;
+            font-size: 20px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .arrow:hover {
+            background-color: var(--toret-light);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .left-arrow { left: -25px; } 
+        .right-arrow { right: -25px; }
+
+        @media (max-width: 1050px) {
+            .left-arrow { left: 10px; }
+            .right-arrow { right: 10px; }
+        }
+
+        /* --- CALCOLATORE ENGAGEMENT --- */
+        .engagement-box {
+            background: var(--beige);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .select-style {
+            background-color: var(--panna);
+            color: var(--toret-green);
+            border: 2px solid var(--toret-green);
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            transition: 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .select-style:focus { background-color: var(--toret-green); color: var(--panna); }
+
+        .result-box { display: none; animation: fadeIn 0.5s ease; }
+        .er-display { font-size: 5rem; font-weight: 800; color: var(--toret-green); margin: 10px 0; }
+
+        /* --- SEZIONE COLLABORAZIONI --- */
+        .year-title {
+            color: var(--toret-green);
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--beige);
+            padding-bottom: 10px;
+            text-align: left;
+        }
+
+        .collab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .collab-card {
+            background: var(--beige);
+            padding: 20px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid rgba(21, 71, 52, 0.1);
+            transition: 0.3s;
+        }
+
+        .collab-card:hover { border-color: var(--toret-green); transform: translateY(-5px); }
+        .collab-brand { color: var(--text-dark); font-weight: 800; font-size: 1.1rem; margin-bottom: 5px; }
+        .collab-date { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;}
+
+        /* --- SEZIONE CONTATTI WEB (MAIL) --- */
+        .contact-section {
+            background-color: var(--toret-green);
+            color: var(--panna);
+            text-align: center;
+            padding: 120px 20px;
+            border-radius: 60px 60px 0 0;
+            margin-top: 50px;
+        }
+        .mail-icon-wrap {
+            font-size: 7rem;
+            margin-bottom: 30px;
+            display: inline-block;
+            animation: pulse-mail 3s infinite ease-in-out;
+            color: var(--panna);
+        }
+        .contact-title { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; }
+        .contact-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 20px 50px;
+            background-color: var(--panna);
+            color: var(--toret-green);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+        .contact-btn:hover { transform: scale(1.05); background-color: var(--beige); }
+
+        /* --- STILE ICONE SOCIAL FOOTER --- */
+        .social-footer {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        .social-footer a {
+            color: var(--beige);
+            font-size: 2.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .social-footer a:hover {
+            color: var(--panna);
+            transform: translateY(-5px); 
+        }
+
+        /* =========================================================
+           STRAVOLGIMENTO GRAFICO - OTTIMIZZAZIONE EDITORIALE PER PDF
+           ========================================================= */
+        @media print {
+            @page {
+                size: portrait;
+                margin: 12mm 12mm;
+            }
+
+            /* RIMOZIONE TOTALE DI SFONDI (PAGINA BIANCA EDITORIALE) */
+            body, html, .section, .hero, .contact-section, #tiktok, footer {
+                background: #ffffff !important;
+                background-color: #ffffff !important;
+                background-image: none !important;
+                color: var(--text-dark) !important;
+                -webkit-print-color-adjust: economy !important;
+                print-color-adjust: economy !important;
+                font-size: 9.5pt !important;
+                line-height: 1.25 !important;
+            }
+
+            .section {
+                padding: 4px 0 !important;
+                margin: 0 !important;
+            }
+
+            /* FORZATURA ASSOLUTA: TIKTOK INIZIA RIGIDAMENTE IN PAGINA 2 */
+            #tiktok {
+                page-break-before: always !important;
+                break-before: page !important;
+            }
+
+            /* Blocca i titoli orfani a fine pagina */
+            .section-title, .section-subtitle, .year-title, h2, h3 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                text-align: left !important;
+            }
+
+            /* Nasconde elementi interattivi web */
+            .hamburger-wrapper, .pdf-btn, .scroll-down, .toggle-container, .arrow, .social-footer, .contact-btn, .select-style, #result-container, #interviews, .collab-link, .mail-icon-wrap, .stat-card i, .content-card i {
+                display: none !important;
+            }
+
+            /* RESET STRUTTURA WEB PER IL LAYOUT GRAFICO PDF EDITORIALE */
+            .stat-card, .content-card, .collab-card, .engagement-box {
+                background: none !important;
+                background-color: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                text-align: left !important;
+            }
+
+            /* --- METRICHE INSTAGRAM COMPATTE SU 2 COLONNE COMPOSITE (PAGINA 1) --- */
+            .timeframe-blocks-container {
+                display: block !important;
+                clear: both !important;
+                margin-top: 5px !important;
+            }
+            #ig-30-block, #ig-90-block {
+                display: inline-block !important;
+                vertical-align: top !important;
+                width: 48% !important;
+                margin-right: 4% !important;
+                box-sizing: border-box !important;
+            }
+            #ig-90-block {
+                margin-right: 0 !important;
+            }
+            .print-timeframe-title {
+                display: block !important;
+                font-size: 10pt !important;
+                color: var(--toret-green) !important;
+                margin: 0 0 5px 0 !important;
+                font-weight: 800;
+                border-bottom: 1px solid rgba(21, 71, 52, 0.15) !important;
+                padding-bottom: 2px !important;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            #ig-30-block .stat-card, #ig-90-block .stat-card {
+                display: block !important;
+                width: 100% !important;
+                margin-right: 0 !important;
+                margin-bottom: 8px !important;
+                border-left: 2px solid var(--toret-green) !important;
+                padding-left: 8px !important;
+            }
+
+            /* --- STRUTTURA AD ORIZZONTE A 3 COLONNE PER INSTAGRAM --- */
+            #instagram .metrics-grid {
+                display: block !important;
+                clear: both !important;
+                margin-top: 5px !important;
+            }
+            #instagram .metrics-grid:not(.timeframe-block .metrics-grid) .content-card {
+                display: inline-block !important;
+                vertical-align: top !important;
+                width: 31% !important;
+                margin-right: 3.5% !important;
+                margin-bottom: 10px !important;
+                border-left: 2px solid var(--toret-green) !important;
+                padding-left: 8px !important;
+            }
+            #instagram .metrics-grid:not(.timeframe-block .metrics-grid) .content-card:last-child {
+                margin-right: 0 !important;
+            }
+
+            /* --- STRUTTURA STRUTTURATA TIKTOK (PAGINA 2) --- */
+            #tiktok .metrics-grid {
+                display: block !important;
+                clear: both !important;
+                margin-top: 5px !important;
+            }
+            #tiktok .metrics-grid:first-of-type .stat-card {
+                display: inline-block !important;
+                vertical-align: top !important;
+                width: 48% !important;
+                margin-right: 4% !important;
+                margin-bottom: 10px !important;
+                border-left: 2px solid var(--toret-green) !important;
+                padding-left: 8px !important;
+            }
+            #tiktok .metrics-grid:first-of-type .stat-card:nth-child(2n) {
+                margin-right: 0 !important;
+            }
+            #tiktok .metrics-grid:last-of-type .content-card {
+                display: inline-block !important;
+                vertical-align: top !important;
+                width: 31% !important;
+                margin-right: 3.5% !important;
+                margin-bottom: 10px !important;
+                border-left: 2px solid var(--toret-green) !important;
+                padding-left: 8px !important;
+            }
+            #tiktok .metrics-grid:last-of-type .content-card:last-child {
+                margin-right: 0 !important;
+            }
+
+            /* Rimpicciolimento controllato e leggibile dei testi */
+            .section-title {
+                font-size: 13pt !important;
+                color: var(--toret-green) !important;
+                margin-top: 12px !important;
+                margin-bottom: 4px !important;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            .section-subtitle {
+                font-size: 8.5pt !important;
+                margin-top: -2px !important;
+                margin-bottom: 8px !important;
+                color: var(--text-muted) !important;
+            }
+            .stat-num {
+                font-size: 18pt !important;
+                color: var(--toret-green) !important;
+                font-weight: 800;
+                line-height: 1.1 !important;
+            }
+            .stat-label {
+                font-size: 8pt !important;
+                color: var(--text-muted) !important;
+                font-weight: 600;
+                display: block !important;
+                margin-top: 1px !important;
+            }
+            .content-card h4 {
+                font-size: 8.5pt !important;
+                color: var(--text-muted) !important;
+                margin: 0 0 1px 0 !important;
+            }
+            .content-num {
+                font-size: 13pt !important;
+                color: var(--toret-green) !important;
+            }
+
+            .content-card div[style*="display: flex"] {
+                display: block !important;
+                font-size: 10pt !important;
+                margin-top: 2px !important;
+            }
+            .progress-bar-bg { display: none !important; }
+            .audience-list { font-size: 8.5pt !important; list-style: none !important; padding: 0 !important; margin: 2px 0 0 0 !important; }
+            .audience-list li { margin-bottom: 2px !important; border-bottom: none !important; padding-bottom: 0 !important; }
+            .audience-sub { font-size: 8pt !important; margin-top: 4px !important; margin-bottom: 1px !important; }
+
+            /* DESIGN COLLABORAZIONI EDITORIALI (STILE LISTA AZIENDALE) */
+            .year-title {
+                border-bottom: 1px solid var(--toret-green) !important;
+                color: var(--toret-green) !important;
+                font-size: 11pt !important;
+                margin-top: 14px !important;
+                margin-bottom: 6px !important;
+                padding-bottom: 2px !important;
+                font-weight: 800;
+            }
+            .collab-grid { display: block !important; }
+            .collab-card {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: baseline !important;
+                padding: 4px 0 !important;
+                margin-bottom: 0 !important;
+                border-bottom: 1px dashed rgba(21, 71, 52, 0.15) !important;
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+            .collab-brand {
+                font-size: 9.5pt !important;
+                color: var(--text-dark) !important;
+                font-weight: 600;
+                margin: 0 !important;
+                display: inline-block !important;
+            }
+            .collab-date {
+                font-size: 8pt !important;
+                color: var(--text-muted) !important;
+                display: inline-block !important;
+            }
+
+            /* SEZIONE ENGAGEMENT RATE */
+            .print-engagement-info { display: block !important; margin-top: 8px !important; }
+            .print-er-row {
+                display: flex !important;
+                justify-content: space-between !important;
+                padding: 4px 0 !important;
+                border-bottom: 1px dashed rgba(21, 71, 52, 0.15) !important;
+                font-size: 10pt !important;
+            }
+            .print-er-row strong { color: var(--text-dark) !important; font-weight: 600; }
+            .print-er-row span { color: var(--toret-green) !important; font-weight: 800; }
+
+            /* INTESTAZIONE HERO MINIMAL IN ALTO A SINISTRA */
+            .hero {
+                height: auto !important;
+                min-height: auto !important;
+                padding: 0 0 8px 0 !important;
+                margin-bottom: 4px !important;
+                border-bottom: 1.5px solid var(--toret-green) !important;
+            }
+            .hero-content { display: block !important; text-align: left !important; }
+            .profile-container { display: inline-block !important; vertical-align: middle !important; margin-bottom: 0 !important; margin-right: 12px !important; }
+            .profile-pic { width: 45px !important; height: 45px !important; border: 2px solid var(--toret-green) !important; padding: 1px !important; }
+            .hero h1 { display: inline-block !important; vertical-align: middle !important; font-size: 16pt !important; color: var(--toret-green) !important; text-shadow: none !important; font-weight: 800; }
+            .hero p { display: block !important; margin-top: 2px !important; font-size: 9pt !important; color: var(--text-muted) !important; text-shadow: none !important; }
+
+            /* --- LAYOUT GRAFICO STRUTTURATO PER GET IN TOUCH NEL PDF --- */
+            .contact-section {
+                background: #ffffff !important;
+                background-color: #ffffff !important;
+                border: 1.5px solid var(--toret-green) !important;
+                border-radius: 12px !important;
+                padding: 20px !important;
+                margin-top: 30px !important;
+                text-align: center !important;
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                display: block !important;
+            }
+            .contact-title { 
+                font-size: 13pt !important; 
+                color: var(--toret-green) !important; 
+                font-weight: 800; 
+                text-transform: uppercase; 
+                margin-bottom: 5px !important;
+                text-align: center !important;
+            }
+            .print-contact-info { 
+                display: block !important; 
+                margin-top: 10px !important; 
+                font-size: 10pt !important; 
+                text-align: center !important; 
+                line-height: 1.5 !important; 
+            }
+            .print-contact-info p { margin: 4px 0 !important; color: var(--text-dark) !important; }
+            .print-contact-info strong { color: var(--toret-green) !important; }
+
+            footer { padding: 10px 0 0 0 !important; font-size: 8pt !important; background: #ffffff !important; color: var(--text-muted) !important; text-align: left !important; border-top: 1px solid rgba(21, 71, 52, 0.1) !important; margin-top: 10px !important; }
+        }
+
+        /* --- TRICK ANIMAZIONE HAMBURGER CENTRATO ED EVITA CONFLITTI TRANSFORM --- */
+        @keyframes bounce { 
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 
+            40% { transform: translateX(-50%) translateY(-10px); } 
+            60% { transform: translateX(-50%) translateY(-5px); } 
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse-mail {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style> 
+</head>  
+      
+<body>
+
+    <button class="pdf-btn" onclick="window.print()" title="Salva come PDF">
+        <i class="fa-solid fa-file-pdf"></i> Salva PDF
+    </button>
+
+    <div class="hamburger-wrapper">
+        <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav class="menu-dropdown" id="dropdownMenu">
+            <a href="#instagram" onclick="toggleMenu()">Instagram</a>
+            <a href="#tiktok" onclick="toggleMenu()">TikTok</a>
+            <a href="#engagement" onclick="toggleMenu()">Engagement Rate</a>
+            <a href="#collabs" onclick="toggleMenu()">Collaborazioni</a>
+            <a href="#interviews" onclick="toggleMenu()">Interviews</a>
+            <a href="#contact" onclick="toggleMenu()">Get in touch</a>
+        </nav>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="profile-container">
+                <img src="foto.jpeg" alt="Isidoro Profilo" class="profile-pic">
+            </div>
+            <h1>ISIDORO</h1>
+            <p>@isidaurum | Content Creator</p>
+        </div>
+
+        <a class="scroll-down" onclick="document.getElementById('instagram').scrollIntoView();">
+            <i class="fa-solid fa-chevron-down"></i>
+        </a>
+    </section>
+    
+    <section id="instagram" class="section">
+        <h2 class="section-title">Instagram Insights</h2>
+        
+        <div class="toggle-container">
+            <button id="btn-30" class="toggle-btn active" onclick="toggleTimeframe('30')">Ultimi 30 Giorni</button>
+            <button id="btn-90" class="toggle-btn" onclick="toggleTimeframe('90')">Ultimi 90 Giorni</button>
+        </div>
+
+        <div class="timeframe-blocks-container">
+            <div id="ig-30-block" class="timeframe-block">
+                <h3 class="print-timeframe-title">Ultimi 30 Giorni</h3>
+                <div class="metrics-grid">
+                    <div class="stat-card">
+                        <span class="stat-num">120K</span>
+                        <span class="stat-label">IG Followers</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num">564K</span>
+                        <span class="stat-label">Accounts Reached</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num">1.94M</span>
+                        <span class="stat-label">Total Views</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num">57.5%</span>
+                        <span class="stat-label">Non-Follower Reach</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="ig-90-block" class="timeframe-block">
+                <h3 class="print-timeframe-title">Ultimi 90 Giorni</h3>
+                <div class="metrics-grid">
+                    <div class="stat-card">
+                        <span class="stat-num">120K</span>
+                        <span class="stat-label">IG Followers</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num">1.46M</span>
+                        <span class="stat-label">Accounts Reached</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num">5.89M</span>
+                        <span class="stat-label">Total Views</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num">54.5%</span>
+                        <span class="stat-label">Non-Follower Reach</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 80px; ">Instagram Demographics</h2>
+        <p class="section-subtitle">La community Instagram di @isidaurum</p>
+        
+        <div class="metrics-grid">
+            <div class="content-card">
+                <h4>Gender Split</h4>
+                <div style="display: flex; justify-content: space-between; margin-top: 15px; font-weight: 800; color: var(--toret-green); font-size: 1.2rem;">
+                    <span>64.9% M</span>
+                    <span style="color: var(--toret-light);">35.1% F</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-fill-m" style="width: 64.9%;"></div>
+                    <div class="progress-fill-f" style="width: 35.1%;"></div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h4>Top Age Groups</h4>
+                <ul class="audience-list">
+                    <li>1. 25-34 Anni</li>
+                    <li>2. 18-24 Anni</li>
+                    <li>3. 35-44 Anni</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h4>Audience Location</h4>
+                <p class="audience-sub">Top Cities</p>
+                <ul class="audience-list" style="margin-top: 0;">
+                    <li>📍 Torino</li>
+                    <li>📍 Milano</li>
+                </ul>
+                <p class="audience-sub" style="margin-top: 15px;">Top Countries</p>
+                <ul class="audience-list" style="margin-top: 0;">
+                    <li>🇮🇹 Italia</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="metrics-grid" style="margin-top: 40px;">
+            <div class="content-card">
+                <h4>Reels</h4>
+                <div class="content-num" id="reach-reels">1.5M</div>
+            </div>
+            <div class="content-card">
+                <h4>Storie</h4>
+                <div class="content-num" id="reach-stories">300K</div>
+            </div>
+            <div class="content-card">
+                <h4>Post</h4>
+                <div class="content-num" id="reach-posts">100K</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tiktok" class="section" style="background-color: rgba(235, 227, 213, 0.3); border-radius: 40px; padding-bottom: 60px;">
+        <h2 class="section-title">TikTok Insights</h2>
+        <p class="section-subtitle">Metriche di interazione</p>
+        
+        <div class="metrics-grid">
+            <div class="stat-card">
+                <span class="stat-num">41.5K</span>
+                <span class="stat-label">TikTok Followers</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-num">5.7M</span>
+                <span class="stat-label">Video Views</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-num">295.6K</span>
+                <span class="stat-label">Likes</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-num">23K</span>
+                <span class="stat-label">Shares</span>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 80px; ">TikTok Demographics</h2>
+        <p class="section-subtitle">Il pubblico di @isidaurum</p>
+        
+        <div class="metrics-grid">
+            <div class="content-card">
+                <h4>Gender Split</h4>
+                <div style="display: flex; justify-content: space-between; margin-top: 15px; font-weight: 800; color: var(--toret-green); font-size: 1.2rem;">
+                    <span>41.3% M</span>
+                    <span style="color: var(--toret-light);">58.7% F</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-fill-m" style="width: 41.3%;"></div>
+                    <div class="progress-fill-f" style="width: 58.7%;"></div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h4>Top Age Groups</h4>
+                <ul class="audience-list">
+                    <li>1. 18-24 Anni (44.5%)</li>
+                    <li>2. 25-34 Anni (33.6%)</li>
+                    <li>3. 35-44 Anni (8.7%)</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h4>Audience Location</h4>
+                <p class="audience-sub">Top Cities</p>
+                <ul class="audience-list" style="margin-top: 0;">
+                    <li>📍 Torino (11.2%)</li>
+                    <li>📍 Milano (8.7%)</li>
+                    <li>📍 Roma (6.8%)</li>
+                </ul>
+                <p class="audience-sub" style="margin-top: 15px;">Top Countries</p>
+                <ul class="audience-list" style="margin-top: 0;">
+                    <li>🇮🇹 Italia (94.6%)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="engagement" class="section">
+        <h2 class="section-title">Engagement Rate</h2>
+        <div class="engagement-box">
+            <select id="platform-select" class="select-style" onchange="showER()">
+                <option value="">-- Seleziona una piattaforma --</option>
+                <option value="instagram">Instagram</option>
+                <option value="tiktok">TikTok</option>
+            </select>
+
+            <div id="result-container" class="result-box">
+                <p style="color: var(--text-muted); margin: 0; font-weight: 600;">Tasso di interazione attuale della community:</p>
+                <div class="er-display" id="er-value">0.00%</div>
+                <p style="color: var(--toret-light); font-size: 0.9rem; margin: 0; font-weight: 600;">Dato stimato in base alle ultime interazioni</p>
+            </div>
+
+            <div class="print-engagement-info">
+                <div class="print-er-row">
+                    <strong>Instagram Engagement Rate</strong>
+                    <span>5.32%</span>
+                </div>
+                <div class="print-er-row">
+                    <strong>TikTok Engagement Rate</strong>
+                    <span>6.85%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="collabs" class="section">
+        <h2 class="section-title">Main Collabs</h2>
+        
+        <h3 class="year-title">2026</h3>
+        <div class="collab-grid">
+            <div class="collab-card">
+                <h4 class="collab-brand">Reale Mutua & Teatro Regio</h4>
+                <div class="collab-date">February 2026</div>
+            </div>
+            <div class="collab-card">
+                <h4 class="collab-brand">Fiscozen</h4>
+                <div class="collab-date">April - May 2026</div>
+            </div>
+        </div>
+
+        <h3 class="year-title">2025</h3>
+        <div class="collab-grid">
+            <div class="collab-card">
+                <h4 class="collab-brand">Caffarel</h4>
+                <div class="collab-date">November 2025</div>
+            </div>
+            <div class="collab-card">
+                <h4 class="collab-brand">Armando Testa – DimmidiSì</h4>
+                <div class="collab-date">Oct - Nov 2025</div>
+            </div>
+            <div class="collab-card">
+                <h4 class="collab-brand">Starbucks</h4>
+                <div class="collab-date">July 2025</div>
+            </div>
+            <div class="collab-card">
+                <h4 class="collab-brand">Braccialetti Aua</h4>
+                <div class="collab-date">July 2025</div>
+            </div>
+            <div class="collab-card">
+                <h4 class="collab-brand">Lime (e-bike)</h4>
+                <div class="collab-date">May 2025</div>
+            </div>
+            <div class="collab-card">
+                <h4 class="collab-brand">24 Bottles</h4>
+                <div class="collab-date">April 2025</div>
+            </div>
+            <div class="collab-card">
+                <h4 class="collab-brand">Centro Commerciale "Le Gru"</h4>
+                <div class="collab-date">Feb - Dec 2025</div>
+            </div>
+        </div>
+
+        <h3 class="year-title">2024</h3>
+        <div class="collab-grid">
+            <div class="collab-card">
+                <h4 class="collab-brand">Centro Commerciale Le Fornaci</h4>
+                <div class="collab-date">December 2024</div>
+            </div>
+            <div class="collab-card">
+                <h4 class="collab-brand">Volontariato Torino ETS</h4>
+                <div class="collab-date">December 2024</div>
+            </div>
+            <div class="collab-card">
+                <h4 class="collab-brand">Museo Nazionale del Cinema & TFF</h4>
+                <div class="collab-date">November 2024</div>
+            </div>
+            <div class="collab-card">
+                <h4 class="collab-brand">Open Fiber</h4>
+                <div class="collab-date">Nov - Dec 2024</div>
+            </div>
+            <div class="collab-card">
+                <h4 class="collab-brand">Turismo Torino</h4>
+                <div class="collab-date">Feb - Jun 2024</div>
+            </div>
+        </div>
+
+        <h3 class="year-title">2023</h3>
+        <div class="collab-grid">
+            <div class="collab-card">
+                <h4 class="collab-brand">Intesa Sanpaolo & ATP Finals</h4>
+                <div class="collab-date">November 2023</div>
+            </div>
+            <div class="collab-card">
+                <h4 class="collab-brand">Intesa Sanpaolo & Teatro Regio</h4>
+                <div class="collab-date">October 2023</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interviews" class="section">
+        <h2 class="section-title">Interviews</h2>
+        <div class="slider-container">
+            <button class="arrow left-arrow" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+
+            <div class="reels-track" id="track">
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DJyZI4KNu0w/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DYeoeXSAI6c/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DYW9_b7sxdM/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DX7MUDDgmyD/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DP9Xfd9DLFd/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DJ3tw7JNqw3/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DDANsM4N-n7/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/C-P80oFtHVQ/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/C68czOON4NZ/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/Cs3cHGBrgNZ/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/CsZQZf7MAHd/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/CsjnsHtP20C/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/CrTib9CvRcq/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/Co9r3-UjECV/embed" scrolling="no" allowtransparency="true"></iframe></div>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/CoZqB0eMZGI/embed" scrolling="no" allowtransparency="true"></iframe></div>
+            </div>
+
+            <button class="arrow right-arrow" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="mail-icon-wrap">
+            <i class="fa-solid fa-envelope-open-text"></i>
+        </div>
+        <h2 class="contact-title">Get in touch</h2>
+        <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px;">Pronto per la prossima collaborazione?</p>
+        
+        <a href="mailto:info@isidaurum.it" class="contact-btn">Let's chat!</a>
+
+        <div class="print-contact-info">
+            <p><i class="fa-solid fa-envelope"></i> Email: <strong>info@isidaurum.it</strong></p>
+            <p><i class="fa-brands fa-instagram"></i> Instagram: <strong>@isidaurum</strong></p>
+            <p><i class="fa-brands fa-tiktok"></i> TikTok: <strong>@isidaurum</strong></p>
+        </div>
+
+        <div class="social-footer">
+            <a href="https://www.instagram.com/isidaurum/" target="_blank" rel="noopener noreferrer" title="Instagram Profile">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@isidaurum" target="_blank" rel="noopener noreferrer" title="TikTok Profile">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 40px; background-color: var(--toret-green); color: var(--beige); font-size: 0.9rem; font-weight: 600;">
+        &copy; 2026 Isidaurum Media Kit | Created with GitHub
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('dropdownMenu').classList.toggle('active');
+        }
+
+        function toggleTimeframe(period) {
+            document.getElementById('btn-30').classList.remove('active');
+            document.getElementById('btn-90').classList.remove('active');
+            document.getElementById('btn-' + period).classList.add('active');
+
+            if (period === '30') {
+                document.getElementById('ig-30-block').style.display = 'block';
+                document.getElementById('ig-90-block').style.display = 'none';
+            } else {
+                document.getElementById('ig-30-block').style.display = 'none';
+                document.getElementById('ig-90-block').style.display = 'block';
+            }
+        }
+
+        function showER() {
+            const platform = document.getElementById('platform-select').value;
+            const container = document.getElementById('result-container');
+            const erValue = document.getElementById('er-value');
+
+            if (platform === 'instagram') {
+                erValue.innerText = '5.32%'; 
+                container.style.display = 'block';
+            } else if (platform === 'tiktok') {
+                erValue.innerText = '6.85%'; 
+                container.style.display = 'block';
+            } else {
+                container.style.display = 'none';
+            }
+        }
+
+        const track = document.getElementById('track');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        const originalReels = Array.from(document.querySelectorAll('.reel-item'));
+        const itemWidth = 335; 
+        const cloneCount = 4; 
+        
+        if (track && originalReels.length > 0) {
+            const firstClones = originalReels.slice(0, cloneCount).map(el => el.cloneNode(true));
+            const lastClones = originalReels.slice(-cloneCount).map(el => el.cloneNode(true));
+            
+            lastClones.forEach(clone => track.insertBefore(clone, track.firstChild));
+            firstClones.forEach(clone => track.appendChild(clone));
+            
+            const allReels = document.querySelectorAll('.reel-item');
+
+            setTimeout(() => {
+                track.style.scrollBehavior = 'auto'; 
+                track.scrollLeft = cloneCount * itemWidth; 
+                
+                setTimeout(() => {
+                    track.style.scrollBehavior = 'smooth'; 
+                    updateCarousel(); 
+                }, 50);
+            }, 100);
+
+            function updateCarousel() {
+                const trackRect = track.getBoundingClientRect();
+                const trackCenter = trackRect.left + trackRect.width / 2;
+                let minDistance = Infinity;
+                let centerReel = null;
+
+                allReels.forEach(reel => {
+                    const reelRect = reel.getBoundingClientRect();
+                    const reelCenter = reelRect.left + reelRect.width / 2;
+                    const distance = Math.abs(trackCenter - reelCenter);
+                    
+                    if(distance < minDistance) {
+                        minDistance = distance;
+                        centerReel = reel;
+                    }
+                });
+
+                allReels.forEach(reel => {
+                    if (reel === centerReel) {
+                        reel.style.transform = 'scale(1)';
+                        reel.style.opacity = '1';
+                        reel.style.zIndex = '2';
+                    } else {
+                        reel.style.transform = 'scale(0.85)';
+                        reel.style.opacity = '0.5';
+                        reel.style.zIndex = '1';
+                    }
+                });
+            }
+
+            function handleInfiniteScroll() {
+                const currentIndex = Math.round(track.scrollLeft / itemWidth);
+                
+                if (currentIndex < cloneCount) {
+                    track.style.scrollBehavior = 'auto';
+                    track.scrollLeft = (currentIndex + originalReels.length) * itemWidth;
+                    void track.offsetWidth; 
+                    track.style.scrollBehavior = 'smooth';
+                } 
+                else if (currentIndex >= originalReels.length + cloneCount) {
+                    track.style.scrollBehavior = 'auto';
+                    track.scrollLeft = (currentIndex - originalReels.length) * itemWidth;
+                    void track.offsetWidth;
+                    track.style.scrollBehavior = 'smooth';
+                }
+            }
+
+            function stopAllIframes() {
+                const iframes = track.querySelectorAll('iframe');
+                iframes.forEach(iframe => {
+                    const currentSrc = iframe.getAttribute('src');
+                    iframe.setAttribute('src', '');
+                    iframe.setAttribute('src', currentSrc);
+                });
+            }
+
+            nextBtn.addEventListener('click', () => {
+                stopAllIframes(); 
+                track.scrollBy({ left: itemWidth, behavior: 'smooth' });
+            });
+
+            prevBtn.addEventListener('click', () => {
+                stopAllIframes(); 
+                track.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+            });
+
+            track.addEventListener('scroll', updateCarousel);
+            
+            let scrollTimeout;
+            track.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    handleInfiniteScroll();
+                }, 150);
+            });
+
+            window.addEventListener('resize', updateCarousel);
+        }
+    </script>
+</body>
+</html>
