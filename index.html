@@ -359,22 +359,22 @@
         .er-guide h4 { color: var(--toret-green); margin: 0 0 15px 0; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
         .er-guide ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
        .er-guide li {
-    background-color: var(--toret-green); /* Sfondo verde scuro */
-    padding: 10px;
-    border-radius: 12px;
-    font-size: 0.95rem; /* Leggermente più grande */
-    color: var(--beige); /* Testo color crema */
-    font-weight: 800; /* Testo in grassetto */
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    border: 1px solid rgba(21, 71, 52, 0.05);
-}
-.er-guide li strong {
-    color: var(--panna); /* Rende la percentuale ancora più chiara per farla spiccare */
-    font-size: 1.1rem;
-}
+            background-color: var(--toret-green);
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 0.95rem; 
+            color: var(--beige); 
+            font-weight: 800; 
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            border: 1px solid rgba(21, 71, 52, 0.05);
+        }
+        .er-guide li strong {
+            color: var(--panna);
+            font-size: 1.1rem;
+        }
 
         /* --- SEZIONE COLLABORAZIONI --- */
         .collab-link { margin-top: 12px; display: inline-block; color: var(--toret-light); font-size: 0.85rem; font-weight: 800; text-transform: uppercase; text-decoration: none; letter-spacing: 1px; transition: 0.3s; border-top: 1px solid rgba(21, 71, 52, 0.1); padding-top: 8px; width: 100%; }
@@ -416,16 +416,21 @@
             .dash-profile { display: flex; align-items: center; gap: 20px; }
             .dash-pic { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--toret-light); object-fit: cover; }
             .dash-name-wrap h1 { margin: 0 0 5px 0; color: var(--toret-green); font-size: 18pt; font-weight: 800; }
+            .dash-name-wrap h2 { margin: 0 0 8px 0; color: var(--toret-green); font-size: 14pt; font-weight: 800; }
             .dash-name-wrap p { margin: 0 0 5px 0; color: var(--text-muted); font-size: 10pt; }
+            .dash-tags { margin-top: 5px; }
             .dash-tags span { display: inline-block; background-color: #e5efe9; color: var(--toret-green); padding: 3px 8px; border-radius: 12px; font-size: 8pt; font-weight: 800; margin-right: 5px; }
             
             .dash-social-box { border: 1px solid #EBE3D5; padding: 15px; border-radius: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px 25px; font-size: 9.5pt; font-weight: 600; color: var(--text-dark); }
             .dash-social-box i { color: var(--toret-light); width: 18px; text-align: center; margin-right: 5px; }
 
-            /* Banner orizzontale */
-            .dash-banner { background-color: #E2EFE9 !important; border-radius: 20px; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-            .banner-item { display: flex; align-items: center; gap: 10px; color: var(--toret-green); font-weight: 800; font-size: 10pt; }
-            .banner-icon { background: #ffffff; width: 30px; height: 30px; border-radius: 8px; display: flex; justify-content: center; align-items: center; color: var(--toret-green); font-size: 12pt; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+            /* --- NUOVO BANNER STATISTICHE PRINT --- */
+            .print-stats-grid { display: flex; gap: 20px; margin-bottom: 25px; }
+            .print-stat-box { flex: 1; background-color: #E2EFE9 !important; border-radius: 12px; padding: 15px; border: 1px solid rgba(21, 71, 52, 0.1); }
+            .print-stat-box h4 { margin: 0 0 10px 0; color: var(--toret-green); font-size: 11pt; border-bottom: 2px solid #ffffff; padding-bottom: 8px; text-align: center; }
+            .stat-row { display: flex; justify-content: space-between; font-size: 9.5pt; color: var(--text-dark); padding: 5px 10px; border-bottom: 1px dashed #ccc; }
+            .stat-row:last-child { border-bottom: none; }
+            .stat-row strong { color: var(--toret-green); font-size: 10.5pt; }
 
             /* Colonne Demografiche */
             .dash-section-title { font-size: 12pt; color: var(--toret-green); margin: 0 0 10px 0; border-bottom: 1px dashed #EBE3D5; padding-bottom: 5px; }
@@ -444,18 +449,53 @@
             .print-bar-bg { background: #e0e0e0 !important; height: 6px; width: 100%; border-radius: 3px; }
             .print-bar-fill { background: var(--toret-green) !important; height: 100%; border-radius: 3px; }
 
-            /* Sezione Engagement Rate in Print */
-            .dash-er-grid { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 25px; background: #fafafa; border: 1px solid #eee; border-radius: 12px; padding: 15px; }
-            .dash-er-col { flex: 1; padding: 0 10px; }
-            .dash-er-col h4 { margin: 0 0 10px 0; font-size: 10pt; color: var(--text-dark); text-align: center; }
-            .er-bar-container { display: flex; align-items: center; margin-bottom: 8px; font-size: 8.5pt; }
-            .er-label { width: 100px; font-weight: 600; color: var(--text-muted); }
-            .er-bar-bg { flex: 1; height: 10px; background: #e0e0e0; border-radius: 5px; position: relative; overflow: hidden;}
-            .er-bar-fill { height: 100%; border-radius: 5px; }
-            .er-active .er-label { color: var(--toret-green); font-weight: 800; }
-            .er-active .er-bar-bg { border: 2px solid #E67E22; box-sizing: border-box; background: #fdebd0;}
-            .er-active .er-bar-fill { background: #E67E22 !important; }
-            .border-left { border-left: 1px solid #ddd; }
+            /* --- SCALA DI MISURAZIONE FEEDBACK / ENGAGEMENT (PRINT) --- */
+            .print-er-container { background: #fafafa !important; border: 1px solid #eee; border-radius: 12px; padding: 20px 15px; margin-bottom: 25px; }
+            .print-er-platform h4 { margin: 0 0 5px 0; font-size: 11pt; color: var(--text-dark); text-align: left; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+            
+            .feedback-scale { display: flex; width: 100%; margin-top: 30px; }
+            .scale-step { flex: 1; text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; }
+            
+            /* Testi sopra e sotto la barra */
+            .step-label-top { font-size: 7.5pt; color: var(--text-muted); margin-bottom: 5px; font-weight: 600; }
+            .step-label-bot { font-size: 8.5pt; color: var(--text-dark); margin-top: 5px; font-weight: 800; }
+            
+            /* Struttura della linea colorata */
+            .step-color-bar { width: 100%; height: 16px; display: flex; align-items: center; }
+            .step-color { height: 8px; width: 100%; border-right: 2px solid #fafafa; }
+            .scale-step:first-child .step-color { border-radius: 8px 0 0 8px; }
+            .scale-step:last-child .step-color { border-radius: 0 8px 8px 0; border-right: none; }
+            
+            /* Effetto rilievo per il segmento attivo */
+            .active-step .step-color { height: 14px; border-radius: 6px; border: 1px solid #fff; position: relative; z-index: 2; box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
+            .active-step .step-label-bot { color: var(--toret-green); }
+            
+            /* Pin arancione che segna la percentuale esatta */
+            .step-marker { 
+                position: absolute; 
+                top: -28px; 
+                left: 50%; 
+                transform: translateX(-50%); 
+                background: #E67E22 !important; 
+                color: #ffffff !important; 
+                padding: 3px 8px; 
+                border-radius: 4px; 
+                font-size: 9pt; 
+                font-weight: 800; 
+                white-space: nowrap; 
+                z-index: 10; 
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            }
+            .step-marker::after { 
+                content: ''; 
+                position: absolute; 
+                bottom: -5px; 
+                left: 50%; 
+                transform: translateX(-50%); 
+                border-width: 5px 5px 0; 
+                border-style: solid; 
+                border-color: #E67E22 transparent transparent transparent; 
+            }
 
             /* Box Contatti Print */
             .contact-section-print { margin-top: 10px; padding: 15px; border: 2px solid var(--toret-green); border-radius: 12px; text-align: center; background: #ffffff; page-break-inside: avoid;}
@@ -480,15 +520,13 @@
       
 <body>
 
-    <!-- ==========================================
-         DASHBOARD ESCLUSIVA PER IL SALVATAGGIO PDF
-         ========================================== -->
     <div id="print-dashboard">
         <div class="dash-header">
             <div class="dash-profile">
                 <img src="foto.jpeg" alt="Isidoro" class="dash-pic">
                 <div class="dash-name-wrap">
                     <h1>ISIDORO</h1>
+                    <h2 style="margin: 0 0 8px 0; color: var(--toret-green); font-size: 14pt; font-weight: 800;">@isidaurum</h2>
                     <p data-it="Torino, Italia" data-en="Turin, Italy">Torino, Italia</p>
                     <div class="dash-tags">
                         <span data-it="Content Creator" data-en="Content Creator">Content Creator</span>
@@ -498,33 +536,30 @@
                 </div>
             </div>
             <div class="dash-social-box">
-                <div><i class="fa-brands fa-instagram"></i> 120K <span data-it="Follower" data-en="Followers">Follower</span></div>
-                <div><i class="fa-brands fa-tiktok"></i> 41.5K <span data-it="Follower" data-en="Followers">Follower</span></div>
-                <div><i class="fa-solid fa-chart-line"></i> ER IG: 5.78%</div>
-                <div><i class="fa-solid fa-chart-line"></i> ER TK: 12.01%</div>
+                <div style="grid-column: span 2; text-align: center;">
+                    <i class="fa-solid fa-envelope"></i> <strong>info@isidaurum.it</strong>
+                </div>
+                <div><i class="fa-brands fa-instagram"></i> 120K Follower</div>
+                <div><i class="fa-brands fa-tiktok"></i> 41.5K Follower</div>
             </div>
         </div>
 
-        <div class="dash-banner">
-            <div class="banner-item">
-                <div class="banner-icon"><i class="fa-solid fa-satellite-dish"></i></div>
-                <span data-it="Copertura Tot. (IG): 1.12M" data-en="Total Reach (IG): 1.12M">Copertura Tot. (IG): 1.12M</span>
+        <div class="print-stats-grid">
+            <div class="print-stat-box">
+                <h4><i class="fa-brands fa-instagram"></i> Instagram</h4>
+                <div class="stat-row"><span>Follower</span> <strong>120K</strong></div>
+                <div class="stat-row"><span>Copertura Tot.</span> <strong>1.12M</strong></div>
+                <div class="stat-row"><span>Views Tot.</span> <strong>2.69M</strong></div>
             </div>
-            <div class="banner-item">
-                <div class="banner-icon"><i class="fa-solid fa-play"></i></div>
-                <span data-it="Views Tot. (TK): 5.7M" data-en="Total Views (TK): 5.7M">Views Tot. (TK): 5.7M</span>
-            </div>
-            <div class="banner-item">
-                <div class="banner-icon"><i class="fa-solid fa-handshake"></i></div>
-                <span data-it="Oltre 20+ Collabs" data-en="Over 20+ Collabs">Oltre 20+ Collabs</span>
-            </div>
-            <div class="banner-item">
-                <div class="banner-icon"><i class="fa-solid fa-envelope"></i></div>
-                <span>info@isidaurum.it</span>
+            <div class="print-stat-box">
+                <h4><i class="fa-brands fa-tiktok"></i> TikTok</h4>
+                <div class="stat-row"><span>Follower</span> <strong>41.5K</strong></div>
+                <div class="stat-row"><span>Video Views</span> <strong>5.7M</strong></div>
+                <div class="stat-row"><span>Mi Piace</span> <strong>295.6K</strong></div>
+                <div class="stat-row"><span>Condivisioni</span> <strong>23K</strong></div>
             </div>
         </div>
 
-        <!-- Demografiche -->
         <h3 class="dash-section-title"><i class="fa-brands fa-instagram"></i> <span data-it="Demografiche Pubblico Instagram" data-en="Instagram Audience Demographics">Demografiche Pubblico Instagram</span></h3>
         <div class="dash-columns">
             <div class="dash-col">
@@ -609,43 +644,90 @@
             </div>
         </div>
 
-        <!-- Analisi Engagement Grafica -->
         <h3 class="dash-section-title"><i class="fa-solid fa-chart-pie"></i> <span data-it="Analisi Engagement Rate" data-en="Engagement Rate Analysis">Analisi Engagement Rate</span></h3>
-        <div class="dash-er-grid">
-            <div class="dash-er-col">
-    <h4 style="color: var(--beige); font-weight: 800;">Instagram (5.78%)</h4>
-    <div class="er-bar-container"><div class="er-label" style="color: var(--beige); font-weight: 800;">Low (&lt; 1%)</div><div class="er-bar-bg"><div class="er-bar-fill" style="width: 10%; background: var(--text-muted);"></div></div></div>
-    <div class="er-bar-container"><div class="er-label" style="color: var(--beige); font-weight: 800;">Improve (1-2%)</div><div class="er-bar-bg"><div class="er-bar-fill" style="width: 20%; background: var(--text-muted);"></div></div></div>
-    <div class="er-bar-container"><div class="er-label" style="color: var(--beige); font-weight: 800;">Average (2-3%)</div><div class="er-bar-bg"><div class="er-bar-fill" style="width: 40%; background: var(--toret-light);"></div></div></div>
-    <div class="er-bar-container"><div class="er-label" style="color: var(--beige); font-weight: 800;">Good (3-5%)</div><div class="er-bar-bg"><div class="er-bar-fill" style="width: 60%; background: var(--toret-green);"></div></div></div>
-    <!-- Linea Evidenziata IG -->
-    <div class="er-bar-container er-active"><div class="er-label" style="color: var(--beige); font-weight: 800;">V. Good (5-6%)</div><div class="er-bar-bg"><div class="er-bar-fill" style="width: 80%; background: #E67E22;"></div></div></div>
-    <div class="er-bar-container"><div class="er-label" style="color: var(--beige); font-weight: 800;">Excellent (&gt; 6%)</div><div class="er-bar-bg"><div class="er-bar-fill" style="width: 100%; background: var(--toret-green);"></div></div></div>
-</div>
+        <div class="print-er-container">
+            
+            <div class="print-er-platform">
+                <h4><i class="fa-brands fa-instagram"></i> Instagram</h4>
+                <div class="feedback-scale">
+                    <div class="scale-step">
+                        <div class="step-label-top">&lt; 1%</div>
+                        <div class="step-color-bar"><div class="step-color" style="background: #e0e0e0 !important;"></div></div>
+                        <div class="step-label-bot">Low</div>
+                    </div>
+                    <div class="scale-step">
+                        <div class="step-label-top">1-2%</div>
+                        <div class="step-color-bar"><div class="step-color" style="background: #c2d6cd !important;"></div></div>
+                        <div class="step-label-bot">Improve</div>
+                    </div>
+                    <div class="scale-step">
+                        <div class="step-label-top">2-3%</div>
+                        <div class="step-color-bar"><div class="step-color" style="background: #9ebfbc !important;"></div></div>
+                        <div class="step-label-bot">Average</div>
+                    </div>
+                    <div class="scale-step">
+                        <div class="step-label-top">3-5%</div>
+                        <div class="step-color-bar"><div class="step-color" style="background: var(--toret-light) !important;"></div></div>
+                        <div class="step-label-bot">Good</div>
+                    </div>
+                    <div class="scale-step active-step">
+                        <div class="step-marker">5.78%</div>
+                        <div class="step-label-top">5-6%</div>
+                        <div class="step-color-bar"><div class="step-color" style="background: var(--toret-green) !important;"></div></div>
+                        <div class="step-label-bot">V. Good</div>
+                    </div>
+                    <div class="scale-step">
+                        <div class="step-label-top">&gt; 6%</div>
+                        <div class="step-color-bar"><div class="step-color" style="background: #0a291d !important;"></div></div>
+                        <div class="step-label-bot">Excellent</div>
+                    </div>
+                </div>
+            </div>
 
-<div class="dash-er-col border-left">
-    <h4 style="color: var(--beige); font-weight: 800;">TikTok (12.01%)</h4>
-    <div class="er-bar-container"><div class="er-label" style="color: var(--beige); font-weight: 800;">Low (&lt; 1%)</div><div class="er-bar-bg"><div class="er-bar-fill" style="width: 10%; background: var(--text-muted);"></div></div></div>
-    <div class="er-bar-container"><div class="er-label" style="color: var(--beige); font-weight: 800;">Improve (1-5%)</div><div class="er-bar-bg"><div class="er-bar-fill" style="width: 30%; background: var(--text-muted);"></div></div></div>
-    <div class="er-bar-container"><div class="er-label" style="color: var(--beige); font-weight: 800;">Average (5-6%)</div><div class="er-bar-bg"><div class="er-bar-fill" style="width: 50%; background: var(--toret-light);"></div></div></div>
-    <div class="er-bar-container"><div class="er-label" style="color: var(--beige); font-weight: 800;">Good (6-10%)</div><div class="er-bar-bg"><div class="er-bar-fill" style="width: 70%; background: var(--toret-green);"></div></div></div>
-    <!-- Linea Evidenziata TikTok -->
-    <div class="er-bar-container er-active"><div class="er-label" style="color: var(--beige); font-weight: 800;">V. Good (10-15%)</div><div class="er-bar-bg"><div class="er-bar-fill" style="width: 90%; background: #E67E22;"></div></div></div>
-    <div class="er-bar-container"><div class="er-label" style="color: var(--beige); font-weight: 800;">Excellent (&gt; 15%)</div><div class="er-bar-bg"><div class="er-bar-fill" style="width: 100%; background: var(--toret-green);"></div></div></div>
-</div>
+            <div class="print-er-platform" style="margin-top: 35px;">
+                <h4><i class="fa-brands fa-tiktok"></i> TikTok</h4>
+                <div class="feedback-scale">
+                    <div class="scale-step">
+                        <div class="step-label-top">&lt; 1%</div>
+                        <div class="step-color-bar"><div class="step-color" style="background: #e0e0e0 !important;"></div></div>
+                        <div class="step-label-bot">Low</div>
+                    </div>
+                    <div class="scale-step">
+                        <div class="step-label-top">1-5%</div>
+                        <div class="step-color-bar"><div class="step-color" style="background: #c2d6cd !important;"></div></div>
+                        <div class="step-label-bot">Improve</div>
+                    </div>
+                    <div class="scale-step">
+                        <div class="step-label-top">5-6%</div>
+                        <div class="step-color-bar"><div class="step-color" style="background: #9ebfbc !important;"></div></div>
+                        <div class="step-label-bot">Average</div>
+                    </div>
+                    <div class="scale-step">
+                        <div class="step-label-top">6-10%</div>
+                        <div class="step-color-bar"><div class="step-color" style="background: var(--toret-light) !important;"></div></div>
+                        <div class="step-label-bot">Good</div>
+                    </div>
+                    <div class="scale-step active-step">
+                        <div class="step-marker">12.01%</div>
+                        <div class="step-label-top">10-15%</div>
+                        <div class="step-color-bar"><div class="step-color" style="background: var(--toret-green) !important;"></div></div>
+                        <div class="step-label-bot">V. Good</div>
+                    </div>
+                    <div class="scale-step">
+                        <div class="step-label-top">&gt; 15%</div>
+                        <div class="step-color-bar"><div class="step-color" style="background: #0a291d !important;"></div></div>
+                        <div class="step-label-bot">Excellent</div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
 
-        <!-- Contatti -->
         <div class="contact-section-print">
             <h2 data-it="Contattaci" data-en="Get in touch">Contattaci</h2>
             <p><i class="fa-solid fa-envelope"></i> Email: <strong>info@isidaurum.it</strong> &nbsp; | &nbsp; <i class="fa-brands fa-instagram"></i> IG & <i class="fa-brands fa-tiktok"></i> TikTok: <strong>@isidaurum</strong></p>
         </div>
     </div>
-    <!-- ========================================== -->
-
-    <!-- ==========================================
-         ELEMENTI WEB (INTERATTIVI SU SCHERMO)
-         ========================================== -->
     <button class="pdf-btn" onclick="window.print()" title="Salva come PDF">
         <i class="fa-solid fa-file-pdf"></i> <span data-it="Salva PDF" data-en="Save PDF">Salva PDF</span>
     </button>
@@ -899,143 +981,4 @@
                 <div class="reel-item"><iframe src="https://www.instagram.com/reel/DX7MUDDgmyD/embed" scrolling="no" allowtransparency="true"></iframe></div>
                 <div class="reel-item"><iframe src="https://www.instagram.com/reel/DP9Xfd9DLFd/embed" scrolling="no" allowtransparency="true"></iframe></div>
                 <div class="reel-item"><iframe src="https://www.instagram.com/reel/DJ3tw7JNqw3/embed" scrolling="no" allowtransparency="true"></iframe></div>
-                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DDANsM4N-n7/embed" scrolling="no" allowtransparency="true"></iframe></div>
-                <div class="reel-item"><iframe src="https://www.instagram.com/reel/C-P80oFtHVQ/embed" scrolling="no" allowtransparency="true"></iframe></div>
-                <div class="reel-item"><iframe src="https://www.instagram.com/reel/C68czOON4NZ/embed" scrolling="no" allowtransparency="true"></iframe></div>
-                <div class="reel-item"><iframe src="https://www.instagram.com/reel/Cs3cHGBrgNZ/embed" scrolling="no" allowtransparency="true"></iframe></div>
-                <div class="reel-item"><iframe src="https://www.instagram.com/reel/CsZQZf7MAHd/embed" scrolling="no" allowtransparency="true"></iframe></div>
-                <div class="reel-item"><iframe src="https://www.instagram.com/reel/CsjnsHtP20C/embed" scrolling="no" allowtransparency="true"></iframe></div>
-                <div class="reel-item"><iframe src="https://www.instagram.com/reel/CrTib9CvRcq/embed" scrolling="no" allowtransparency="true"></iframe></div>
-                <div class="reel-item"><iframe src="https://www.instagram.com/reel/Co9r3-UjECV/embed" scrolling="no" allowtransparency="true"></iframe></div>
-                <div class="reel-item"><iframe src="https://www.instagram.com/reel/CoZqB0eMZGI/embed" scrolling="no" allowtransparency="true"></iframe></div>
-            </div>
-            <button class="arrow right-arrow" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-        <h2 class="contact-title" data-it="Contattaci" data-en="Get in touch">Contattaci</h2>
-        <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px;" data-it="Pronto per la prossima collaborazione?" data-en="Ready for your next collaboration?">Pronto per la prossima collaborazione?</p>
-        <a href="mailto:info@isidaurum.it" class="contact-btn" data-it="Scrivici!" data-en="Let's chat!">Scrivici!</a>
-        <div class="social-footer">
-            <a href="https://www.instagram.com/isidaurum/" target="_blank" rel="noopener noreferrer" title="Instagram Profile"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@isidaurum" target="_blank" rel="noopener noreferrer" title="TikTok Profile"><i class="fa-brands fa-tiktok"></i></a>
-        </div>
-    </section>
-
-    <footer style="text-align: center; padding: 40px; background-color: var(--toret-green); color: var(--beige); font-size: 0.9rem; font-weight: 600;" data-it="&copy; 2026 Isidaurum Media Kit | Creato con GitHub" data-en="&copy; 2026 Isidaurum Media Kit | Created with GitHub">
-        &copy; 2026 Isidaurum Media Kit | Creato con GitHub
-    </footer>
-
-    <script>
-        let currentLang = 'it';
-        function toggleLanguage() {
-            currentLang = currentLang === 'it' ? 'en' : 'it';
-            const langBtn = document.getElementById('lang-btn');
-            langBtn.innerHTML = currentLang === 'it' ? '🇬🇧 ENG' : '🇮🇹 ITA';
-            
-            const elements = document.querySelectorAll('[data-it]');
-            elements.forEach(el => { el.innerHTML = el.getAttribute(`data-${currentLang}`); });
-        }
-
-        function toggleMenu() { document.getElementById('dropdownMenu').classList.toggle('active'); }
-
-        function toggleTimeframe(period) {
-            document.getElementById('btn-30').classList.remove('active');
-            document.getElementById('btn-90').classList.remove('active');
-            document.getElementById('btn-' + period).classList.add('active');
-
-            if (period === '30') {
-                document.getElementById('ig-reach').innerText = '1.12M';
-                document.getElementById('ig-views').innerText = '2.69M';
-                document.getElementById('ig-nonfollowers').innerText = '61.5%';
-                document.getElementById('ig-30-block').style.display = 'block';
-                document.getElementById('ig-90-block').style.display = 'none';
-            } else {
-                document.getElementById('ig-reach').innerText = '1.94M';
-                document.getElementById('ig-views').innerText = '6.74M';
-                document.getElementById('ig-nonfollowers').innerText = '50.9%';
-                document.getElementById('ig-30-block').style.display = 'none';
-                document.getElementById('ig-90-block').style.display = 'block';
-            }
-        }
-
-        function showER() {
-            const platform = document.getElementById('platform-select').value;
-            const container = document.getElementById('result-container');
-            const erValue = document.getElementById('er-value');
-            const igGuide = document.getElementById('ig-guide');
-            const tkGuide = document.getElementById('tiktok-guide');
-
-            if (platform === 'instagram') {
-                erValue.innerText = '5,78%'; 
-                container.style.display = 'block';
-                if(igGuide) igGuide.style.display = 'block';
-                if(tkGuide) tkGuide.style.display = 'none';
-            } else if (platform === 'tiktok') {
-                erValue.innerText = '12,01%'; 
-                container.style.display = 'block';
-                if(igGuide) igGuide.style.display = 'none';
-                if(tkGuide) tkGuide.style.display = 'block';
-            } else {
-                container.style.display = 'none';
-                if(igGuide) igGuide.style.display = 'none';
-                if(tkGuide) tkGuide.style.display = 'none';
-            }
-        }
-
-        const track = document.getElementById('track');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        
-        const originalReels = Array.from(document.querySelectorAll('.reel-item'));
-        const itemWidth = 335; const cloneCount = 4; 
-        
-        if (track && originalReels.length > 0) {
-            const firstClones = originalReels.slice(0, cloneCount).map(el => el.cloneNode(true));
-            const lastClones = originalReels.slice(-cloneCount).map(el => el.cloneNode(true));
-            lastClones.forEach(clone => track.insertBefore(clone, track.firstChild));
-            firstClones.forEach(clone => track.appendChild(clone));
-            
-            const allReels = document.querySelectorAll('.reel-item');
-
-            setTimeout(() => {
-                track.style.scrollBehavior = 'auto'; track.scrollLeft = cloneCount * itemWidth; 
-                setTimeout(() => { track.style.scrollBehavior = 'smooth'; updateCarousel(); }, 50);
-            }, 100);
-
-            function updateCarousel() {
-                const trackRect = track.getBoundingClientRect();
-                const trackCenter = trackRect.left + trackRect.width / 2;
-                let minDistance = Infinity; let centerReel = null;
-
-                allReels.forEach(reel => {
-                    const reelRect = reel.getBoundingClientRect();
-                    const reelCenter = reelRect.left + reelRect.width / 2;
-                    const distance = Math.abs(trackCenter - reelCenter);
-                    if(distance < minDistance) { minDistance = distance; centerReel = reel; }
-                });
-
-                allReels.forEach(reel => {
-                    if (reel === centerReel) { reel.style.transform = 'scale(1)'; reel.style.opacity = '1'; reel.style.zIndex = '2'; } 
-                    else { reel.style.transform = 'scale(0.85)'; reel.style.opacity = '0.5'; reel.style.zIndex = '1'; }
-                });
-            }
-
-            function handleInfiniteScroll() {
-                const currentIndex = Math.round(track.scrollLeft / itemWidth);
-                if (currentIndex < cloneCount) { track.style.scrollBehavior = 'auto'; track.scrollLeft = (currentIndex + originalReels.length) * itemWidth; void track.offsetWidth; track.style.scrollBehavior = 'smooth'; } 
-                else if (currentIndex >= originalReels.length + cloneCount) { track.style.scrollBehavior = 'auto'; track.scrollLeft = (currentIndex - originalReels.length) * itemWidth; void track.offsetWidth; track.style.scrollBehavior = 'smooth'; }
-            }
-
-            function stopAllIframes() { const iframes = track.querySelectorAll('iframe'); iframes.forEach(iframe => { const currentSrc = iframe.getAttribute('src'); iframe.setAttribute('src', ''); iframe.setAttribute('src', currentSrc); }); }
-            nextBtn.addEventListener('click', () => { stopAllIframes(); track.scrollBy({ left: itemWidth, behavior: 'smooth' }); });
-            prevBtn.addEventListener('click', () => { stopAllIframes(); track.scrollBy({ left: -itemWidth, behavior: 'smooth' }); });
-            track.addEventListener('scroll', updateCarousel);
-            let scrollTimeout;
-            track.addEventListener('scroll', () => { clearTimeout(scrollTimeout); scrollTimeout = setTimeout(() => { handleInfiniteScroll(); }, 150); });
-            window.addEventListener('resize', updateCarousel);
-        }
-    </script>
-</body>
-</html>
+                <div class="reel-item"><iframe src="https://www.instagram.com/reel/DDANsM4N-n7/embed" scrolling="no" allowtransparency="true
