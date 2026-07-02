@@ -31,7 +31,7 @@
         #ig-90-block { display: none; }
         .print-timeframe-title { display: none; }
 
-        /* --- MENU HAMBURGER FLUTTUANTE --- */
+        /* --- MENU HAMBURGER & LINGUA FLUTTUANTE --- */
         .hamburger-wrapper {
             position: fixed;
             top: 25px;
@@ -59,6 +59,35 @@
             background-color: var(--toret-green);
             color: var(--panna);
         }
+        
+        .lang-btn {
+            position: fixed;
+            top: 25px;
+            right: 95px; /* Spaziato dall'hamburger menu */
+            background-color: var(--beige);
+            color: var(--toret-green);
+            border: none;
+            height: 55px;
+            padding: 0 20px;
+            border-radius: 30px;
+            font-family: 'Urbanist', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            outline: none;
+            z-index: 9999;
+        }
+        .lang-btn:hover {
+            transform: scale(1.05);
+            background-color: var(--toret-green);
+            color: var(--panna);
+        }
+
         .menu-dropdown {
             position: absolute;
             top: 70px;
@@ -121,7 +150,8 @@
 
         /* --- INFO SOLO PER STAMPA/PDF --- */
         .print-contact-info,
-        .print-engagement-info {
+        .print-engagement-info,
+        .print-er-guide {
             display: none;
         }
 
@@ -307,16 +337,15 @@
             
             transition: transform 0.4s ease, opacity 0.4s ease;
             transform: scale(0.85);
-            opacity: 0.5;           
+            opacity: 0.5;            
             z-index: 1;
         }
 
        .reel-item iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
-
 
         .arrow {
             position: absolute;
@@ -382,8 +411,51 @@
         .result-box { display: block; animation: fadeIn 0.5s ease; } /* Pre-attivata di base */
         .er-display { font-size: 5rem; font-weight: 800; color: var(--toret-green); margin: 10px 0; }
 
+        /* --- ER GUIDE UI WEB --- */
+        .er-guide {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: var(--panna);
+            border: 2px solid var(--beige);
+            border-radius: 20px;
+            text-align: left;
+            animation: fadeIn 0.5s ease;
+        }
+        .er-guide h4 {
+            color: var(--toret-green);
+            margin: 0 0 15px 0;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        .er-guide ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+        }
+        .er-guide li {
+            background-color: var(--beige);
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            border: 1px solid rgba(21, 71, 52, 0.05);
+        }
+        .er-guide li strong {
+            color: var(--toret-green);
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
         /* --- SEZIONE COLLABORAZIONI --- */
-      /* --- LINK AI REEL NELLE COLLAB --- */
         .collab-link {
             margin-top: 12px;
             display: inline-block;
@@ -491,15 +563,14 @@
         }
 
         /* =========================================================
-           STRAVOLGIMENTO GRAFICO - OTTIMIZZAZIONE EDITORIALE PER PDF
-           ========================================================= */
+            STRAVOLGIMENTO GRAFICO - OTTIMIZZAZIONE EDITORIALE PER PDF
+            ========================================================= */
         @media print {
             @page {
                 size: portrait;
                 margin: 12mm 12mm;
             }
 
-            /* RIMOZIONE TOTALE DI SFONDI (PAGINA BIANCA EDITORIALE) */
             body, html, .section, .hero, .contact-section, #tiktok, footer {
                 background: #ffffff !important;
                 background-color: #ffffff !important;
@@ -518,25 +589,21 @@
                 border-radius: 0 !important;
             }
 
-            /* FORZATURA ASSOLUTA: TIKTOK INIZIA RIGIDAMENTE IN PAGINA 2 */
             #tiktok {
                 page-break-before: always !important;
                 break-before: page !important;
             }
 
-            /* Blocca i titoli orfani a fine pagina */
             .section-title, .section-subtitle, .year-title, h2, h3 {
                 page-break-after: avoid !important;
                 break-after: avoid !important;
                 text-align: left !important;
             }
 
-            /* Nasconde elementi interattivi web */
-            .hamburger-wrapper, .pdf-btn, .scroll-down, .toggle-container, .arrow, .social-footer, .contact-btn, .select-style, #result-container, #interviews, .collab-link, .mail-icon-wrap, .stat-card i, .content-card i {
+            .hamburger-wrapper, .lang-btn, .pdf-btn, .scroll-down, .toggle-container, .arrow, .social-footer, .contact-btn, .select-style, #result-container, #interviews, .collab-link, .mail-icon-wrap, .stat-card i, .content-card i, .er-guide {
                 display: none !important;
             }
 
-            /* RESET STRUTTURA WEB PER IL LAYOUT GRAFICO PDF EDITORIALE */
             .stat-card, .content-card, .collab-card, .engagement-box {
                 background: none !important;
                 background-color: transparent !important;
@@ -548,7 +615,6 @@
                 text-align: left !important;
             }
 
-            /* --- METRICHE INSTAGRAM COMPATTE SU 2 COLONNE COMPOSITE (PAGINA 1) --- */
             .timeframe-blocks-container {
                 display: block !important;
                 clear: both !important;
@@ -584,7 +650,6 @@
                 padding-left: 8px !important;
             }
 
-            /* --- STRUTTURA AD ORIZZONTE A 3 COLONNE PER INSTAGRAM --- */
             #instagram .metrics-grid {
                 display: block !important;
                 clear: both !important;
@@ -603,7 +668,6 @@
                 margin-right: 0 !important;
             }
 
-            /* --- STRUTTURA STRUTTURATA TIKTOK (PAGINA 2) --- */
             #tiktok .metrics-grid {
                 display: block !important;
                 clear: both !important;
@@ -634,7 +698,6 @@
                 margin-right: 0 !important;
             }
 
-            /* Rimpicciolimento controllato e leggibile dei testi */
             .section-title {
                 font-size: 13pt !important;
                 color: var(--toret-green) !important;
@@ -683,7 +746,6 @@
             .audience-list li { margin-bottom: 2px !important; border-bottom: none !important; padding-bottom: 0 !important; }
             .audience-sub { font-size: 8pt !important; margin-top: 4px !important; margin-bottom: 1px !important; }
 
-            /* DESIGN COLLABORAZIONI EDITORIALI (STILE LISTA AZIENDALE) */
             .year-title {
                 border-bottom: 1px solid var(--toret-green) !important;
                 color: var(--toret-green) !important;
@@ -717,7 +779,6 @@
                 display: inline-block !important;
             }
 
-            /* --- STRUTTURA EDITORIALE ENGAGEMENT RATE NEL PDF --- */
             .print-engagement-info { 
                 display: block !important; 
                 margin-top: 10px !important; 
@@ -734,7 +795,22 @@
             .print-er-row strong { color: var(--text-dark) !important; font-weight: 600; }
             .print-er-row span { color: var(--toret-green) !important; font-weight: 800; }
 
-            /* INTESTAZIONE HERO MINIMAL IN ALTO A SINISTRA */
+            .print-er-guide {
+                display: block !important;
+                margin-top: 15px !important;
+                background: #fdfbf7 !important;
+                border: 1px solid rgba(21, 71, 52, 0.2) !important;
+                padding: 10px !important;
+                border-radius: 8px !important;
+                font-size: 8.5pt !important;
+                line-height: 1.5 !important;
+            }
+            .print-er-guide h4 {
+                margin: 0 0 5px 0 !important;
+                color: var(--toret-green) !important;
+                font-size: 9.5pt !important;
+            }
+
             .hero {
                 height: auto !important;
                 min-height: auto !important;
@@ -748,7 +824,6 @@
             .hero h1 { display: inline-block !important; vertical-align: middle !important; font-size: 16pt !important; color: var(--toret-green) !important; text-shadow: none !important; font-weight: 800; }
             .hero p { display: block !important; margin-top: 2px !important; font-size: 9pt !important; color: var(--text-muted) !important; text-shadow: none !important; }
 
-            /* --- LAYOUT GRAFICO STRUTTURATO PER GET IN TOUCH NEL PDF --- */
             .contact-section {
                 background: #ffffff !important;
                 background-color: #ffffff !important;
@@ -782,7 +857,6 @@
             footer { padding: 10px 0 0 0 !important; font-size: 8pt !important; background: #ffffff !important; color: var(--text-muted) !important; text-align: left !important; border-top: 1px solid rgba(21, 71, 52, 0.1) !important; margin-top: 10px !important; }
         }
 
-        /* --- TRICK ANIMAZIONE HAMBURGER CENTRATO ED EVITA CONFLITTI TRANSFORM --- */
         @keyframes bounce { 
             0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 
             40% { transform: translateX(-50%) translateY(-10px); } 
@@ -800,7 +874,11 @@
 <body>
 
     <button class="pdf-btn" onclick="window.print()" title="Salva come PDF">
-        <i class="fa-solid fa-file-pdf"></i> Salva PDF
+        <i class="fa-solid fa-file-pdf"></i> <span data-it="Salva PDF" data-en="Save PDF">Salva PDF</span>
+    </button>
+    
+    <button class="lang-btn" onclick="toggleLanguage()" id="lang-btn">
+        🇬🇧 ENG
     </button>
 
     <div class="hamburger-wrapper">
@@ -811,7 +889,7 @@
             <a href="#instagram" onclick="toggleMenu()">Instagram</a>
             <a href="#tiktok" onclick="toggleMenu()">TikTok</a>
             <a href="#engagement" onclick="toggleMenu()">Engagement Rate</a>
-            <a href="#collabs" onclick="toggleMenu()">Collaborazioni</a>
+            <a href="#collabs" onclick="toggleMenu()" data-it="Collaborazioni" data-en="Collaborations">Collaborazioni</a>
             <a href="#interviews" onclick="toggleMenu()">Interviews</a>
             <a href="#contact" onclick="toggleMenu()">Get in touch</a>
         </nav>
@@ -835,13 +913,13 @@
         <h2 class="section-title">Instagram Insights</h2>
         
         <div class="toggle-container">
-            <button id="btn-30" class="toggle-btn active" onclick="toggleTimeframe('30')">Ultimi 30 Giorni</button>
-            <button id="btn-90" class="toggle-btn" onclick="toggleTimeframe('90')">Ultimi 90 Giorni</button>
+            <button id="btn-30" class="toggle-btn active" onclick="toggleTimeframe('30')" data-it="Ultimi 30 Giorni" data-en="Last 30 Days">Ultimi 30 Giorni</button>
+            <button id="btn-90" class="toggle-btn" onclick="toggleTimeframe('90')" data-it="Ultimi 90 Giorni" data-en="Last 90 Days">Ultimi 90 Giorni</button>
         </div>
 
         <div class="timeframe-blocks-container">
             <div id="ig-30-block" class="timeframe-block">
-                <h3 class="print-timeframe-title">Ultimi 30 Giorni</h3>
+                <h3 class="print-timeframe-title" data-it="Ultimi 30 Giorni" data-en="Last 30 Days">Ultimi 30 Giorni</h3>
                 <div class="metrics-grid">
                     <div class="stat-card">
                         <i class="fa-solid fa-users"></i>
@@ -867,7 +945,7 @@
             </div>
             
             <div id="ig-90-block" class="timeframe-block">
-                <h3 class="print-timeframe-title">Ultimi 90 Giorni</h3>
+                <h3 class="print-timeframe-title" data-it="Ultimi 90 Giorni" data-en="Last 90 Days">Ultimi 90 Giorni</h3>
                 <div class="metrics-grid">
                     <div class="stat-card">
                         <i class="fa-solid fa-users"></i>
@@ -894,7 +972,7 @@
         </div>
 
         <h2 class="section-title" style="margin-top: 80px; ">Instagram Demographics</h2>
-        <p class="section-subtitle">La community Instagram di @isidaurum</p>
+        <p class="section-subtitle" data-it="La community Instagram di @isidaurum" data-en="The Instagram community of @isidaurum">La community Instagram di @isidaurum</p>
         
         <div class="metrics-grid">
             <div class="content-card">
@@ -914,9 +992,9 @@
                 <i class="fa-solid fa-cake-candles"></i>
                 <h4>Top Age Groups</h4>
                 <ul class="audience-list">
-                    <li>1. 25-34 Anni</li>
-                    <li>2. 18-24 Anni</li>
-                    <li>3. 35-44 Anni</li>
+                    <li data-it="1. 25-34 Anni" data-en="1. 25-34 Years">1. 25-34 Anni</li>
+                    <li data-it="2. 18-24 Anni" data-en="2. 18-24 Years">2. 18-24 Anni</li>
+                    <li data-it="3. 35-44 Anni" data-en="3. 35-44 Years">3. 35-44 Anni</li>
                 </ul>
             </div>
 
@@ -943,12 +1021,12 @@
             </div>
             <div class="content-card">
                 <i class="fa-solid fa-circle-notch"></i>
-                <h4>Storie</h4>
+                <h4 data-it="Storie" data-en="Stories">Storie</h4>
                 <div class="content-num" id="reach-stories">783K</div>
             </div>
             <div class="content-card">
                 <i class="fa-solid fa-image"></i>
-                <h4>Post</h4>
+                <h4 data-it="Post" data-en="Posts">Post</h4>
                 <div class="content-num" id="reach-posts">59K</div>
             </div>
         </div>
@@ -956,7 +1034,7 @@
 
     <section id="tiktok" class="section" style="background-color: rgba(235, 227, 213, 0.3); border-radius: 40px; padding-bottom: 60px;border-top: 12px solid rgba(255, 255, 255, 0.8);">
         <h2 class="section-title">TikTok Insights</h2>
-        <p class="section-subtitle">Metriche di interazione</p>
+        <p class="section-subtitle" data-it="Metriche di interazione" data-en="Interaction Metrics">Metriche di interazione</p>
         
         <div class="metrics-grid">
             <div class="stat-card">
@@ -982,7 +1060,7 @@
         </div>
 
         <h2 class="section-title" style="margin-top: 80px; ">TikTok Demographics</h2>
-        <p class="section-subtitle">Il pubblico di @isidaurum</p>
+        <p class="section-subtitle" data-it="Il pubblico di @isidaurum" data-en="@isidaurum's Audience">Il pubblico di @isidaurum</p>
         
         <div class="metrics-grid">
             <div class="content-card">
@@ -1002,9 +1080,9 @@
                 <i class="fa-solid fa-cake-candles"></i>
                 <h4>Top Age Groups</h4>
                 <ul class="audience-list">
-                    <li>1. 18-24 Anni (44.5%)</li>
-                    <li>2. 25-34 Anni (33.6%)</li>
-                    <li>3. 35-44 Anni (8.7%)</li>
+                    <li data-it="1. 18-24 Anni (44.5%)" data-en="1. 18-24 Years (44.5%)">1. 18-24 Anni (44.5%)</li>
+                    <li data-it="2. 25-34 Anni (33.6%)" data-en="2. 25-34 Years (33.6%)">2. 25-34 Anni (33.6%)</li>
+                    <li data-it="3. 35-44 Anni (8.7%)" data-en="3. 35-44 Years (8.7%)">3. 35-44 Anni (8.7%)</li>
                 </ul>
             </div>
 
@@ -1034,11 +1112,38 @@
             </select>
 
             <div id="result-container" class="result-box">
-                <p style="color: var(--text-muted); margin: 0; font-weight: 600;">Tasso di interazione calcolato con HypeAuditor :</p>
+                <p style="color: var(--text-muted); margin: 0; font-weight: 600;" data-it="Tasso di interazione calcolato con HypeAuditor :" data-en="Engagement rate calculated with HypeAuditor :">Tasso di interazione calcolato con HypeAuditor :</p>
                 <div class="er-display" id="er-value">5,78%</div>
-                <p style="color: var(--toret-light); font-size: 0.9rem; margin: 0; font-weight: 600;">aggiornato al 22 giugno 2026</p>
+                <p style="color: var(--toret-light); font-size: 0.9rem; margin: 0; font-weight: 600;" data-it="aggiornato al 22 giugno 2026" data-en="updated on June 22, 2026">aggiornato al 22 giugno 2026</p>
+                
+                <!-- GUIDA INSTAGRAM -->
+                <div id="ig-guide" class="er-guide">
+                    <h4 data-it="Benchmark Instagram" data-en="Instagram Benchmark">Benchmark Instagram</h4>
+                    <ul>
+                        <li><strong>&lt; 1%</strong> Low</li>
+                        <li><strong>1% - 2%</strong> Could be improved</li>
+                        <li><strong>2% - 3%</strong> Average</li>
+                        <li><strong>3% - 5%</strong> Good</li>
+                        <li><strong>5% - 6%</strong> Very good</li>
+                        <li><strong>&gt; 6%</strong> Excellent</li>
+                    </ul>
+                </div>
+
+                <!-- GUIDA TIKTOK -->
+                <div id="tiktok-guide" class="er-guide" style="display: none;">
+                    <h4 data-it="Benchmark TikTok" data-en="TikTok Benchmark">Benchmark TikTok</h4>
+                    <ul>
+                        <li><strong>&lt; 1%</strong> Low</li>
+                        <li><strong>1% - 5%</strong> Could be improved</li>
+                        <li><strong>5% - 6%</strong> Average</li>
+                        <li><strong>6% - 10%</strong> Good</li>
+                        <li><strong>10% - 15%</strong> Very good</li>
+                        <li><strong>&gt; 15%</strong> Excellent</li>
+                    </ul>
+                </div>
             </div>
 
+            <!-- VERSIONE STAMPABILE ER -->
             <div class="print-engagement-info">
                 <div class="print-er-row">
                     <strong>Instagram Engagement Rate</strong>
@@ -1046,9 +1151,17 @@
                 </div>
                 <div class="print-er-row">
                     <strong>TikTok Engagement Rate</strong>
-                    <span>11,6%</span>
+                    <span>12,01%</span>
                 </div>
             </div>
+
+            <!-- VERSIONE STAMPABILE GUIDA BENCHMARK -->
+            <div class="print-er-guide">
+                <h4 data-it="Benchmark di Riferimento" data-en="Reference Benchmark">Benchmark di Riferimento</h4>
+                <p style="margin: 0;"><strong>IG:</strong> &lt;1% Low | 1-2% Could be improved | 2-3% Average | 3-5% Good | 5-6% Very good | &gt;6% Excellent</p>
+                <p style="margin: 3px 0 0 0;"><strong>TikTok:</strong> &lt;1% Low | 1-5% Could be improved | 5-6% Average | 6-10% Good | 10-15% Very good | &gt;15% Excellent</p>
+            </div>
+
         </div>
     </section>
 
@@ -1060,12 +1173,12 @@
             <div class="collab-card">
                 <h4 class="collab-brand">Reale Mutua & Teatro Regio</h4>
                 <div class="collab-date">February 2026</div>
-                <a href="https://www.instagram.com/reel/DVMSL04gJKY/?igsh=bTBsZGZicTN1M2xr" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.instagram.com/reel/DVMSL04gJKY/?igsh=bTBsZGZicTN1M2xr" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
                 <h4 class="collab-brand">Fiscozen</h4>
                 <div class="collab-date">April - May 2026</div>
-                <a href="https://www.instagram.com/reel/DXOxTCWDBG1/?igsh=MXBwOXZjMzZ0bWlmcw==" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.instagram.com/reel/DXOxTCWDBG1/?igsh=MXBwOXZjMzZ0bWlmcw==" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
               <div class="collab-card">
                 <h4 class="collab-brand">IKEA</h4>
@@ -1078,7 +1191,7 @@
             <div class="collab-card">
                 <h4 class="collab-brand">Aperol</h4>
                 <div class="collab-date">June 2026</div>
-                                <a href="https://www.instagram.com/reel/DZ2ighpsgVx/?igsh=MTEydG5wcXBua2RwbQ==" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                <a href="https://www.instagram.com/reel/DZ2ighpsgVx/?igsh=MTEydG5wcXBua2RwbQ==" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
 
@@ -1087,27 +1200,27 @@
             <div class="collab-card">
                 <h4 class="collab-brand">Caffarel</h4>
                 <div class="collab-date">November 2025</div>
-                <a href="https://www.instagram.com/reel/DRpgE7ujEm0/?igsh=MWFqdHIyMTFkdHh5Ng==" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.instagram.com/reel/DRpgE7ujEm0/?igsh=MWFqdHIyMTFkdHh5Ng==" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
                 <h4 class="collab-brand">Armando Testa – DimmidiSì</h4>
                 <div class="collab-date">Oct - Nov 2025</div>
-                <a href="https://www.instagram.com/p/DQg8bh-gGdE/?igsh=ZjJvbDdsZzd4dzN0" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.instagram.com/p/DQg8bh-gGdE/?igsh=ZjJvbDdsZzd4dzN0" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
                 <h4 class="collab-brand">Starbucks</h4>
                 <div class="collab-date">July 2025</div>
-                <a href="https://vm.tiktok.com/ZNRnv7tCY/" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://vm.tiktok.com/ZNRnv7tCY/" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
                 <h4 class="collab-brand">Braccialetti Aua</h4>
                 <div class="collab-date">July 2025</div>
-                <a href="https://www.instagram.com/reels/DMGCVi4MLzW/" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.instagram.com/reels/DMGCVi4MLzW/" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
                 <h4 class="collab-brand">Lime (e-bike)</h4>
                 <div class="collab-date">May 2025</div>
-                <a href="https://www.instagram.com/reel/DJcFHb6thNU/?igsh=bThrc3ozMHVvM3Jy" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.instagram.com/reel/DJcFHb6thNU/?igsh=bThrc3ozMHVvM3Jy" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
                 <h4 class="collab-brand">24 Bottles</h4>
@@ -1116,7 +1229,7 @@
             <div class="collab-card">
                 <h4 class="collab-brand">Centro Commerciale "Le Gru"</h4>
                 <div class="collab-date">Feb - Dec 2025</div>
-                <a href="https://www.instagram.com/reel/DPqOhWbAKtf/?igsh=MjZmMnk1bmIxMzUy" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.instagram.com/reel/DPqOhWbAKtf/?igsh=MjZmMnk1bmIxMzUy" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
 
@@ -1125,27 +1238,27 @@
             <div class="collab-card">
                 <h4 class="collab-brand">Centro Commerciale Le Fornaci</h4>
                 <div class="collab-date">December 2024</div>
-                <a href="https://www.instagram.com/reel/DDMwWG6NF72/?igsh=M3k0Y2xjMTY2ODE2" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.instagram.com/reel/DDMwWG6NF72/?igsh=M3k0Y2xjMTY2ODE2" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
                 <h4 class="collab-brand">Volontariato Torino ETS</h4>
                 <div class="collab-date">December 2024</div>
-                <a href="https://www.instagram.com/reel/DDRW76gNgZA/?igsh=MTM3cG95MDBqZXJvbw==" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.instagram.com/reel/DDRW76gNgZA/?igsh=MTM3cG95MDBqZXJvbw==" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
                 <h4 class="collab-brand">Museo Nazionale del Cinema & TFF</h4>
                 <div class="collab-date">November 2024</div>
-                <a href="https://www.instagram.com/reel/DC_4LFDNWMz/?igsh=aTEzODR5a3VtdHVk" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.instagram.com/reel/DC_4LFDNWMz/?igsh=aTEzODR5a3VtdHVk" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
                 <h4 class="collab-brand">Open Fiber</h4>
                 <div class="collab-date">Nov - Dec 2024</div>
-                <a href="https://www.instagram.com/reel/DCjcdARNkk5/?igsh=dGhzZGF3MmtmYmJh" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.instagram.com/reel/DCjcdARNkk5/?igsh=dGhzZGF3MmtmYmJh" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
                 <h4 class="collab-brand">Turismo Torino</h4>
                 <div class="collab-date">Feb - Jun 2024</div>
-                <a href="https://www.instagram.com/reels/C71ySISNL1J/" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.instagram.com/reels/C71ySISNL1J/" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
 
@@ -1154,12 +1267,12 @@
             <div class="collab-card">
                 <h4 class="collab-brand">Intesa Sanpaolo & ATP Finals</h4>
                 <div class="collab-date">November 2023</div>
-                <a href="https://www.instagram.com/reel/CzovBEztNA9/?igsh=ZXNtN2U0M3d2ZGh6" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.instagram.com/reel/CzovBEztNA9/?igsh=ZXNtN2U0M3d2ZGh6" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
             <div class="collab-card">
                 <h4 class="collab-brand">Intesa Sanpaolo & Teatro Regio</h4>
                 <div class="collab-date">October 2023</div>
-                <a href="https://www.instagram.com/reel/CxsYQ7atfae/?igsh=MWVoOGV0ZDhjcDc1ZQ==" target="_blank" class="collab-link">Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.instagram.com/reel/CxsYQ7atfae/?igsh=MWVoOGV0ZDhjcDc1ZQ==" target="_blank" class="collab-link" data-it='Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda Content <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
     </section>
@@ -1193,7 +1306,7 @@
 
     <section id="contact" class="contact-section">
         <h2 class="contact-title">Get in touch</h2>
-        <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px;">Pronto per la prossima collaborazione?</p>
+        <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px;" data-it="Pronto per la prossima collaborazione?" data-en="Ready for your next collaboration?">Pronto per la prossima collaborazione?</p>
         
         <a href="mailto:info@isidaurum.it" class="contact-btn">Let's chat!</a>
 
@@ -1213,15 +1326,37 @@
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 40px; background-color: var(--toret-green); color: var(--beige); font-size: 0.9rem; font-weight: 600;">
-        &copy; 2026 Isidaurum Media Kit | Created with GitHub
+    <footer style="text-align: center; padding: 40px; background-color: var(--toret-green); color: var(--beige); font-size: 0.9rem; font-weight: 600;" data-it="&copy; 2026 Isidaurum Media Kit | Creato con GitHub" data-en="&copy; 2026 Isidaurum Media Kit | Created with GitHub">
+        &copy; 2026 Isidaurum Media Kit | Creato con GitHub
     </footer>
 
     <script>
+        // Gestione Lingua
+        let currentLang = 'it';
+        function toggleLanguage() {
+            currentLang = currentLang === 'it' ? 'en' : 'it';
+            
+            // Aggiorna il testo del pulsante lingua
+            const langBtn = document.getElementById('lang-btn');
+            if (currentLang === 'it') {
+                langBtn.innerHTML = '🇬🇧 ENG';
+            } else {
+                langBtn.innerHTML = '🇮🇹 ITA';
+            }
+
+            // Traduci tutti gli elementi contrassegnati
+            const elements = document.querySelectorAll('[data-it]');
+            elements.forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${currentLang}`);
+            });
+        }
+
+        // Gestione Menù Hamburger
         function toggleMenu() {
             document.getElementById('dropdownMenu').classList.toggle('active');
         }
 
+        // Gestione Timeframe Instagram
         function toggleTimeframe(period) {
             document.getElementById('btn-30').classList.remove('active');
             document.getElementById('btn-90').classList.remove('active');
@@ -1242,22 +1377,32 @@
             }
         }
 
+        // Calcolatore Engagement Rate
         function showER() {
             const platform = document.getElementById('platform-select').value;
             const container = document.getElementById('result-container');
             const erValue = document.getElementById('er-value');
+            const igGuide = document.getElementById('ig-guide');
+            const tkGuide = document.getElementById('tiktok-guide');
 
             if (platform === 'instagram') {
-                erValue.innerText = '6.33%'; 
+                erValue.innerText = '5,78%'; 
                 container.style.display = 'block';
+                if(igGuide) igGuide.style.display = 'block';
+                if(tkGuide) tkGuide.style.display = 'none';
             } else if (platform === 'tiktok') {
-                erValue.innerText = '12.12%'; 
+                erValue.innerText = '12,01%'; 
                 container.style.display = 'block';
+                if(igGuide) igGuide.style.display = 'none';
+                if(tkGuide) tkGuide.style.display = 'block';
             } else {
                 container.style.display = 'none';
+                if(igGuide) igGuide.style.display = 'none';
+                if(tkGuide) tkGuide.style.display = 'none';
             }
         }
 
+        // Gestione Slider Carosello Reels
         const track = document.getElementById('track');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
