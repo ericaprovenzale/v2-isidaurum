@@ -450,7 +450,15 @@
             .print-bar-fill { background: var(--toret-green) !important; height: 100%; border-radius: 3px; }
 
             /* --- SCALA DI MISURAZIONE FEEDBACK / ENGAGEMENT (PRINT) --- */
-            .print-er-container { background: #fafafa !important; border: 1px solid #eee; border-radius: 12px; padding: 20px 15px; margin-bottom: 25px; }
+            .print-er-container { 
+                background: #fafafa !important; 
+                border: 1px solid #eee; 
+                border-radius: 12px; 
+                padding: 20px 15px; 
+                margin-bottom: 15px; /* Spazio ridotto perché ora i box sono separati */
+                page-break-inside: avoid; /* PREVIENE IL TAGLIO DEL BOX IN STAMPA */
+                break-inside: avoid;
+            }
             .print-er-platform h4 { margin: 0 0 5px 0; font-size: 11pt; color: var(--text-dark); text-align: left; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
             
             .feedback-scale { display: flex; width: 100%; margin-top: 30px; }
@@ -520,12 +528,16 @@
       
 <body>
 
+    <!-- ==========================================
+         DASHBOARD ESCLUSIVA PER IL SALVATAGGIO PDF
+         ========================================== -->
     <div id="print-dashboard">
         <div class="dash-header">
             <div class="dash-profile">
                 <img src="foto.jpeg" alt="Isidoro" class="dash-pic">
                 <div class="dash-name-wrap">
                     <h1>ISIDORO</h1>
+                    <!-- Handle -->
                     <h2 style="margin: 0 0 8px 0; color: var(--toret-green); font-size: 14pt; font-weight: 800;">@isidaurum</h2>
                     <p data-it="Torino, Italia" data-en="Turin, Italy">Torino, Italia</p>
                     <div class="dash-tags">
@@ -544,6 +556,7 @@
             </div>
         </div>
 
+        <!-- Banner suddiviso per Piattaforma SENZA il dato dei 20+ Collabs -->
         <div class="print-stats-grid">
             <div class="print-stat-box">
                 <h4><i class="fa-brands fa-instagram"></i> Instagram</h4>
@@ -560,6 +573,7 @@
             </div>
         </div>
 
+        <!-- Demografiche -->
         <h3 class="dash-section-title"><i class="fa-brands fa-instagram"></i> <span data-it="Demografiche Pubblico Instagram" data-en="Instagram Audience Demographics">Demografiche Pubblico Instagram</span></h3>
         <div class="dash-columns">
             <div class="dash-col">
@@ -644,9 +658,11 @@
             </div>
         </div>
 
+        <!-- Analisi Engagement Grafica a Scala (Divisa in due container separati) -->
         <h3 class="dash-section-title"><i class="fa-solid fa-chart-pie"></i> <span data-it="Analisi Engagement Rate" data-en="Engagement Rate Analysis">Analisi Engagement Rate</span></h3>
+        
+        <!-- INSTAGRAM -->
         <div class="print-er-container">
-            
             <div class="print-er-platform">
                 <h4><i class="fa-brands fa-instagram"></i> Instagram</h4>
                 <div class="feedback-scale">
@@ -670,6 +686,7 @@
                         <div class="step-color-bar"><div class="step-color" style="background: var(--toret-light) !important;"></div></div>
                         <div class="step-label-bot">Good</div>
                     </div>
+                    <!-- FASE ATTIVA IG -->
                     <div class="scale-step active-step">
                         <div class="step-marker">5.78%</div>
                         <div class="step-label-top">5-6%</div>
@@ -683,8 +700,11 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="print-er-platform" style="margin-top: 35px;">
+        <!-- TIKTOK -->
+        <div class="print-er-container" style="margin-bottom: 25px;">
+            <div class="print-er-platform">
                 <h4><i class="fa-brands fa-tiktok"></i> TikTok</h4>
                 <div class="feedback-scale">
                     <div class="scale-step">
@@ -707,6 +727,7 @@
                         <div class="step-color-bar"><div class="step-color" style="background: var(--toret-light) !important;"></div></div>
                         <div class="step-label-bot">Good</div>
                     </div>
+                    <!-- FASE ATTIVA TIKTOK -->
                     <div class="scale-step active-step">
                         <div class="step-marker">12.01%</div>
                         <div class="step-label-top">10-15%</div>
@@ -720,9 +741,13 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
+    <!-- ========================================== -->
+
+    <!-- ==========================================
+         ELEMENTI WEB (INTERATTIVI SU SCHERMO)
+         ========================================== -->
     <button class="pdf-btn" onclick="window.print()" title="Salva come PDF">
         <i class="fa-solid fa-file-pdf"></i> <span data-it="Salva PDF" data-en="Save PDF">Salva PDF</span>
     </button>
@@ -963,6 +988,7 @@
         </div>
     </section>
 
+    <!-- BOX CONTATTI ESCLUSIVO PER STAMPA PDF -->
     <div id="print-contact">
         <h2 data-it="Contattaci" data-en="Get in touch">Contattaci</h2>
         <p><i class="fa-solid fa-envelope"></i> Email: <strong>info@isidaurum.it</strong> &nbsp; | &nbsp; <i class="fa-brands fa-instagram"></i> IG & <i class="fa-brands fa-tiktok"></i> TikTok: <strong>@isidaurum</strong></p>
@@ -995,6 +1021,7 @@
         </div>
     </section>
 
+    <!-- SEZIONE CONTATTI ESCLUSIVA PER SITO WEB -->
     <section id="contact" class="contact-section">
         <h2 class="contact-title" data-it="Contattaci" data-en="Get in touch">Contattaci</h2>
         <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 20px;" data-it="Pronto per la prossima collaborazione?" data-en="Ready for your next collaboration?">Pronto per la prossima collaborazione?</p>
@@ -1009,6 +1036,7 @@
         &copy; 2026 Isidaurum Media Kit | Creato con GitHub
     </footer>
 
+    <!-- INIZIO SCRIPT JS RECUPERATO E FUNZIONANTE -->
     <script>
         let currentLang = 'it';
         function toggleLanguage() {
@@ -1122,4 +1150,4 @@
         }
     </script>
 </body>
-</html> 
+</html>
