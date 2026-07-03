@@ -449,19 +449,30 @@
             .print-bar-bg { background: #e0e0e0 !important; height: 6px; width: 100%; border-radius: 3px; }
             .print-bar-fill { background: var(--toret-green) !important; height: 100%; border-radius: 3px; }
 
-            /* --- SCALA DI MISURAZIONE FEEDBACK / ENGAGEMENT (PRINT) --- */
+           /* --- SCALA DI MISURAZIONE FEEDBACK / ENGAGEMENT (PRINT) --- */
             .print-er-container { 
                 background: #fafafa !important; 
                 border: 1px solid #eee; 
                 border-radius: 12px; 
                 padding: 20px 15px; 
-                margin-bottom: 15px; /* Spazio ridotto perché ora i box sono separati */
-                page-break-inside: avoid; /* PREVIENE IL TAGLIO DEL BOX IN STAMPA */
-                break-inside: avoid;
+                margin-bottom: 20px; 
+                display: inline-block; 
+                width: 100%; 
+                box-sizing: border-box;
+                page-break-inside: avoid !important; 
+                break-inside: avoid !important;
             }
-            .print-er-platform h4 { margin: 0 0 5px 0; font-size: 11pt; color: var(--text-dark); text-align: left; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+
+            /* Aggiunge una separazione visiva se ci sono due box */
+            .print-er-container + .print-er-container {
+                border-top: 2px dashed #EBE3D5;
+                margin-top: 10px;
+                padding-top: 25px;
+            }
+
+            .print-er-platform h4 { margin: 0 0 15px 0; font-size: 11pt; color: var(--toret-green); text-align: left; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
             
-            .feedback-scale { display: flex; width: 100%; margin-top: 30px; }
+            .feedback-scale { display: flex; width: 100%; margin-top: 10px; }
             .scale-step { flex: 1; text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; }
             
             /* Testi sopra e sotto la barra */
