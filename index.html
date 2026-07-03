@@ -463,14 +463,10 @@
                 break-inside: avoid !important;
             }
 
-            /* Aggiunge una separazione visiva se ci sono due box */
-            .print-er-container + .print-er-container {
-                border-top: 2px dashed #EBE3D5;
-                margin-top: 10px;
-                padding-top: 20px;
-            }
+          /* Forza TikTok su pagina nuova */
+            .print-er-container:nth-of-type(2) { page-break-before: always !important; break-before: page !important; }
 
-            .print-er-platform h4 { margin: 0 0 15px 0; font-size: 11pt; color: var(--toret-green); text-align: left; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+            .print-er-platform h4 { margin: 0 0 5px 0; font-size: 11pt; color: var(--toret-green); text-align: left; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
             
             .feedback-scale { display: flex; width: 100%; margin-top: 10px; }
             .scale-step { flex: 1; text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; }
