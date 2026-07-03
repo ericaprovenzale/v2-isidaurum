@@ -462,16 +462,6 @@
                page-break-after: avoid !important; 
     break-after: avoid !important;
 }
-            .print-er-group-ig { 
-        page-break-inside: avoid !important; 
-        break-inside: avoid !important; 
-    }
-
-    /* Forza TikTok ad andare sempre nella pagina successiva */
-    #tiktok-box { 
-        page-break-before: always !important; 
-        break-before: page !important; 
-    }
 
           /* Forza TikTok su pagina nuova */
             .print-er-container:nth-of-type(2) { page-break-before: always !important; break-before: page !important; }
@@ -676,7 +666,6 @@
         </div>
 
         <!-- Analisi Engagement Grafica a Scala (Divisa in due container separati) -->
-        <div class="print-er-group-ig">
 <h3 class="dash-section-title"><i class="fa-solid fa-chart-pie"></i> <span data-it="Analisi Engagement Rate" data-en="Engagement Rate Analysis">Analisi Engagement Rate</span></h3>        
         <!-- INSTAGRAM -->
       <div class="print-er-container">
@@ -720,7 +709,7 @@
         </div>
 
         <!-- TIKTOK -->
-        <div class="print-er-container" id="tiktok-box" style="margin-bottom: 25px;">
+        <div class="print-er-container" style="margin-bottom: 25px;">
             <div class="print-er-platform">
                 <h4><i class="fa-brands fa-tiktok"></i> TikTok</h4>
                 <div class="feedback-scale">
