@@ -636,30 +636,34 @@
             <div class="dash-col border-lr">
                 <h4 data-it="Follower per Età" data-en="Followers by Age">Follower per Età</h4>
                 <div class="print-bar-row">
-                    <div class="print-bar-label"><span>18-24 (44.5%)</span></div>
+                    <div class="print-bar-label"><span>18-24 (11,9%)</span></div>
                     <div class="print-bar-bg"><div class="print-bar-fill" style="width: 44.5%;"></div></div>
                 </div>
                 <div class="print-bar-row">
-                    <div class="print-bar-label"><span>25-34 (33.6%)</span></div>
+                    <div class="print-bar-label"><span>25-34 (36,0%)</span></div>
                     <div class="print-bar-bg"><div class="print-bar-fill" style="width: 33.6%;"></div></div>
                 </div>
                 <div class="print-bar-row">
-                    <div class="print-bar-label"><span>35-44 (8.7%)</span></div>
+                    <div class="print-bar-label"><span>35-44 (19.4%)</span></div>
+                    <div class="print-bar-bg"><div class="print-bar-fill" style="width: 8.7%;"></div></div>
+                </div>
+                <div class="print-bar-row">
+                    <div class="print-bar-label"><span>45-54 (14.3%)</span></div>
                     <div class="print-bar-bg"><div class="print-bar-fill" style="width: 8.7%;"></div></div>
                 </div>
             </div>
             <div class="dash-col">
                 <h4 data-it="Località Principali" data-en="Top Locations">Località Principali</h4>
                 <div class="print-bar-row">
-                    <div class="print-bar-label"><span>Torino (11.2%)</span></div>
+                    <div class="print-bar-label"><span>Torino (20.8%)</span></div>
                     <div class="print-bar-bg"><div class="print-bar-fill" style="width: 30%;"></div></div>
                 </div>
                 <div class="print-bar-row">
-                    <div class="print-bar-label"><span>Milano (8.7%)</span></div>
+                    <div class="print-bar-label"><span>Milano-Roma (3,3%)</span></div>
                     <div class="print-bar-bg"><div class="print-bar-fill" style="width: 25%;"></div></div>
                 </div>
                 <div class="print-bar-row">
-                    <div class="print-bar-label"><span data-it="Italia (94.6%)" data-en="Italy (94.6%)">Italia (94.6%)</span></div>
+                    <div class="print-bar-label"><span data-it="Italia (76.6%)" data-en="Italy (94.6%)">Italia (94.6%)</span></div>
                     <div class="print-bar-bg"><div class="print-bar-fill" style="width: 94.6%;"></div></div>
                 </div>
             </div>
@@ -907,8 +911,8 @@
 
             <div id="result-container" class="result-box">
                 <p style="color: var(--text-muted); margin: 0; font-weight: 600;" data-it="Tasso di interazione calcolato con HypeAuditor :" data-en="Engagement rate calculated with HypeAuditor :">Tasso di interazione calcolato con HypeAuditor :</p>
-                <div class="er-display" id="er-value">5,78%</div>
-                <p style="color: var(--toret-light); font-size: 0.9rem; margin: 0; font-weight: 600;" data-it="aggiornato al 2 luglio 2026" data-en="updated on July 2, 2026">aggiornato al 2 luglio 2026</p>
+                <div class="er-display" id="er-value">5,57%</div>
+                <p style="color: var(--toret-light); font-size: 0.9rem; margin: 0; font-weight: 600;" data-it="aggiornato al 7 ottobre 2026" data-en="updated on October 7, 2026">aggiornato al 7 ottobre 2026</p>
                 
                 <div id="ig-guide" class="er-guide">
                     <h4 data-it="Benchmark Instagram" data-en="Instagram Benchmark">Benchmark Instagram</h4>
@@ -941,6 +945,12 @@
         <h2 class="section-title" data-it="Principali Collaborazioni" data-en="Main Collabs">Principali Collaborazioni</h2>
         
         <h3 class="year-title">2026</h3>
+         <div class="collab-grid">
+            <div class="collab-card">
+                <h4 class="collab-brand">Aperol</h4>
+                <div class="collab-date" data-it="Settembre 2026" data-en="September 2026">Settembre 2026</div>
+                <a href="https://www.instagram.com/reel/DdOuTHYgqeO/?stkn=MWp4eDJucmtqdG5oMQ==" target="_blank" class="collab-link" data-it='Guarda il Contenuto <i class="fa-solid fa-arrow-up-right-from-square"></i>' data-en='Watch Content <i class="fa-solid fa-arrow-up-right-from-square"></i>'>Guarda il Contenuto <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
         <div class="collab-grid">
             <div class="collab-card">
                 <h4 class="collab-brand">Aperol</h4>
@@ -1086,12 +1096,12 @@
             const tkGuide = document.getElementById('tiktok-guide');
 
             if (platform === 'instagram') {
-                erValue.innerText = '5,78%'; 
+                erValue.innerText = '5,57%'; 
                 container.style.display = 'block';
                 if(igGuide) igGuide.style.display = 'block';
                 if(tkGuide) tkGuide.style.display = 'none';
             } else if (platform === 'tiktok') {
-                erValue.innerText = '12,01%'; 
+                erValue.innerText = '11,56%'; 
                 container.style.display = 'block';
                 if(igGuide) igGuide.style.display = 'none';
                 if(tkGuide) tkGuide.style.display = 'block';
